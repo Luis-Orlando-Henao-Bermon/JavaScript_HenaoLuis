@@ -29,7 +29,7 @@ console.log(operadoresBandera);
 
 //-----------------------------------------------------------------------------
 //===========Ejercicios============
-const añoActual=2024
+const añoActual=2024;
 //Funcion con parameto y sin retorno
 function fechaNacimiento(año) {
     
@@ -37,9 +37,11 @@ function fechaNacimiento(año) {
     
 }
 
-var edad=40
+var edad=40;
 
 fechaNacimiento(edad)
+
+
 //Funcion con parametro y con retorno
 function fahrenheit(celcius) {
 
@@ -48,7 +50,7 @@ function fahrenheit(celcius) {
     return gradosFarenheit
 }
 
-let gracosC= 38
+let gracosC= 38;
 
 console.log(gracosC,"grados celsius son",fahrenheit(gracosC),"grados fahrenheit");
 
@@ -67,3 +69,45 @@ function descuento(llegada) {
 }
 
 descuento(51)
+
+
+//funcion sin parametro y sin retorno
+function hola() {
+
+    console.log("hola Mundo");
+}
+
+hola()
+
+
+//funcion con parametro y sin retorno
+function holaNombre(nombre) {
+
+    console.log("hola "+nombre);
+
+}
+
+holaNombre("luis")
+
+//funcion sin parametro y con retorno
+
+function multiplicacion() {
+    
+    let result=3*10;
+
+    return result
+}
+
+console.log(multiplicacion());
+
+//funcion con parametro y con retorno
+
+function suma(x,y) {
+    
+    let suma=x+y;
+
+    return suma
+}
+
+console.log(suma(10,32));
+
