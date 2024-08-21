@@ -1769,374 +1769,332 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                     
                     let confiAgregarNota="si"
                     while (confiAgregarNota==="si")
+                        
                         console.log("-----Modulos-----")//se muestran los modulos que hay (esa informacion la tiene cada uno de los campers)
-                        for g in range(len(campus["Coordinador"][1]["numeroModulo"])):
-                            console.log(g+1,campus["Coordinador"][1]["numeroModulo"][g])
-
-                        bol42=true
-                        while bol42==true:
-                            try:
-                                moduloAgregarNota=Number(prompt("Ingrese el modulo al que le quiere agregar la nota de modulo (Ingrese el numero)\n"))//se pide el modulo en el cual quiere agregar nota de filtro y si dice una nota diferente a las que hay en pantalla le pide que ingrese una valida
-                                while moduloAgregarNota<1 or moduloAgregarNota>5:
-                                    moduloAgregarNota=Number(prompt("Ingrese un modulo de los que aparecen en pantalla\n"))
-                                bol42=False
-                            except ValueError:
-                                console.log("Ingrese el numero del modulo")
-
+                        conteo=0
+                        for (const g of campus["Coordinador"][1]["numeroModulo"]){
+                            console.log(conteo+1,g)
+                            conteo+=1
+                        }
+                        let moduloAgregarNota=Number(prompt("Ingrese el modulo al que le quiere agregar la nota de modulo (Ingrese el numero)\n"))//se pide el modulo en el cual quiere agregar nota de filtro y si dice una nota diferente a las que hay en pantalla le pide que ingrese una valida
+                        while (moduloAgregarNota<1 || moduloAgregarNota>5){
+                            moduloAgregarNota=Number(prompt("Ingrese un modulo de los que aparecen en pantalla\n"))
+                        }
                         
                         //dependiendo de la opcion que escoja se le pide la nota teorica y la practica luego se saca el promedio de esas 2 y esa es la nota que se agrega a cada modulo (cada camper tiene un lugar para cada nota)
 
                         
-                            console.clear();
-                            
-                            bol43=true
-                            while bol43==true:
-                                
-                                try:
-                                    notaTeoricaM1=Number(prompt("Ingrese la nota del filtro teorico\n"))
-                                    while notaTeoricaM1<0 or notaTeoricaM1>100:
-                                        notaTeoricaM1=Number(prompt("Ingrese una nota valida (Entre 0 y 100)\n"))
-                                    bol43=False
-                                except ValueError:
-                                    console.log("Ingresa una nota valida (Numero)")
-                            
-                            console.clear();
-                            
-                            bol44=true
-                            while bol44==true:
-                                
-                                try:
-                                    notaPracticaM1=Number(prompt("Ingrese la nota del filtro practico\n"))
-                                    while notaPracticaM1<0 or notaPracticaM1>100:
-                                        notaPracticaM1=Number(prompt("Ingrese una nota valida (Entre 0 y 100)\n"))
-                                    bol44=False
-                                except ValueError:
-                                    console.log("Ingresa una nota valida (Numero)")
-                            
-                            console.clear();
-                            notaFiltroM1=(notaPracticaM1+notaTeoricaM1)/2
+                        console.clear();
+                        
+                        let notaTeoricaM1=Number(prompt("Ingrese la nota del filtro teorico\n"))
+                        while (notaTeoricaM1<0 || notaTeoricaM1>100){
+                            notaTeoricaM1=Number(prompt("Ingrese una nota valida (Entre 0 y 100)\n"))
+                        }
+                        console.clear();
+                        
+                        let notaPracticaM1=Number(prompt("Ingrese la nota del filtro practico\n"))
+                        while (notaPracticaM1<0 || notaPracticaM1>100){
+                            notaPracticaM1=Number(prompt("Ingrese una nota valida (Entre 0 y 100)\n"))
+                        }
+                        console.clear();
+                        notaFiltroM1=(notaPracticaM1+notaTeoricaM1)/2
 
-                            bol47=true
-                            while bol47==true:
-                                
-                                try:
-                                    notaTrabajosM1=Number(prompt("Ingrese la nota del promedio en los trabajos y quizes en clase\n"))
-                                    while notaTrabajosM1<0 or notaTrabajosM1>100:
-                                        notaTrabajosM1=Number(prompt("Ingrese una nota valida (Entre 0 y 100)\n"))
-                                    bol47=False
-                                except ValueError:
-                                    console.log("Ingresa una nota valida (Numero)")
+                        let notaTrabajosM1=Number(prompt("Ingrese la nota del promedio en los trabajos y quizes en clase\n"))
+                        while (notaTrabajosM1<0 || notaTrabajosM1>100){
+                            notaTrabajosM1=Number(prompt("Ingrese una nota valida (Entre 0 y 100)\n"))
+                        }
+                        let practica=notaPracticaM1*0.6
+                        let teorica=notaTeoricaM1*0.3
+                        let trabajos=notaTrabajosM1*0.1
+                        let total=practica+teorica+trabajos
 
-                            practica=notaPracticaM1*0.6
-                            teorica=notaTeoricaM1*0.3
-                            trabajos=notaTrabajosM1*0.1
-                            total=practica+teorica+trabajos
+                        if (total<60){
+                            var riesgoM1="Alto"}
+                        
+                        else if (total>60){
+                            riesgoM1="Bajo"
+                        }
 
-                            if total<60:
-                                riesgoM1="Alto"
-                            
-                            elif total>60:
-                                riesgoM1="Bajo"
+                        campus["Campers"][posicionCamperNota]["riesgo"][moduloAgregarNota-1]=riesgoM1//aca se agrega el riesgo de este modulo
+                        
+                        campus["Campers"][posicionCamperNota]["notaFiltro"][moduloAgregarNota-1]=notaFiltroM1
 
-
-                            campus["Campers"][posicionCamperNota]["riesgo"][moduloAgregarNota-1]=riesgoM1//aca se agrega el riesgo de este modulo
-                            
-                            campus["Campers"][posicionCamperNota]["notaFiltro"][moduloAgregarNota-1]=notaFiltroM1
-
-                            confiAgregarNota=prompt("Si quieres agregar otra nota de filtro escribe: si, de lo contrario preciona enter\n")
-                            console.clear();
+                        confiAgregarNota=prompt("Si quieres agregar otra nota de filtro escribe: si, de lo contrario preciona enter\n")
+                        console.clear();
 
 
                     menuCoordinador()
-                    try:
-                        opcMenuCoordinador=Number(prompt("Ingresa tu opcion\n"))
-                        while opcMenuCoordinador<1 or opcMenuCoordinador>9:
-                                opcMenuCoordinador=Number(prompt("Ingresa una opcion de las que aparecen en pantalla\n"))//se usa un bucle while para que cada vez que ingresen un numero mayor a 7 o menor a 1(que son las opciones validas) le diga que por favor ingrese una opcion de las que aparecen en pantalla
-                    except ValueError:
-                        opcMenuCoordinador=Number(prompt("Ingresa una opcion valida (Numero)\n"))
-                        while opcMenuCoordinador<1 or opcMenuCoordinador>9:
-                                opcMenuCoordinador=Number(prompt("Ingresa una opcion de las que aparecen en pantalla\n"))//se usa un bucle while para que cada vez que ingresen un numero mayor a 7 o menor a 1(que son las opciones validas) le diga que por favor ingrese una opcion de las que aparecen en pantalla
+                    opcMenuCoordinador=Number(prompt("Ingresa tu opcion\n"))
+                    while (opcMenuCoordinador<1 || opcMenuCoordinador>9){
+                        opcMenuCoordinador=Number(prompt("Ingresa una opcion de las que aparecen en pantalla\n"))//se usa un bucle while para que cada vez que ingresen un numero mayor a 7 o menor a 1(que son las opciones validas) le diga que por favor ingrese una opcion de las que aparecen en pantallapantalla
+                    }
 
 
                 case 5:
                     //consultar cuales campers se encuentran en riesgo alto
 
                     console.log("-----Modulos-----")
-                    for j in range(len(campus["Coordinador"][1]["numeroModulo"])):
+                    for (const j of campus["Coordinador"][1]["numeroModulo"]){
                         console.log(j+1, campus["Coordinador"][1]["numeroModulo"][j])
+                    }
 
-
-                    bol56=true
-                    while bol56==true:
-                        try:
-                            riesgoModulo=Number(prompt("Ingrese el numero del modulo de el que quiere ver los campers en riego alto\n"))
-                            while  riesgoModulo<1 or riesgoModulo>5:
-                                riesgoModuloNumber=Number(prompt("Ingrese un modulo de los que aparecen en pantalla\n"))
-                            bol56=False
-                        except ValueError:
-                            console.log("Ingrese un modulo valido (Ingrese el numero del modulo)")
-
-
+                    let riesgoModulo=Number(prompt("Ingrese el numero del modulo de el que quiere ver los campers en riego alto\n"))
+                    while  (riesgoModulo<1 || riesgoModulo>5){
+                        riesgoModuloNumber=Number(prompt("Ingrese un modulo de los que aparecen en pantalla\n"))
+                    }
                     console.clear();
                     console.log("-----Campers en riesgo alto en este modulo-----")
-                    cont9=0
-                    for i in range(len(campus["Campers"])):
-                        if campus["Campers"][i]["riesgo"][riesgoModulo-1]=="Alto":
+                    let cont9=0
+                    for (const i of campus["Campers"]){
+                        if (i["riesgo"][riesgoModulo-1]==="Alto"){
                             console.log("------------------------------")
                             console.log("Nombre:",campus["Campers"][i]["nombres"])
                             console.log("ID:",campus["Campers"][i]["id"])
                             cont9+=1
-                    
-                    if cont9==0:
-                        console.log("Ningun camper tiene riesgo alto en este modulo")
-
+                        }
+                    }
+                    if (cont9===0){
+                        console.log("Ningun camper tiene riesgo alto en este modulo")}
 
                     menuCoordinador()
-                    try:
-                        opcMenuCoordinador=Number(prompt("Ingresa tu opcion\n"))
-                        while opcMenuCoordinador<1 or opcMenuCoordinador>9:
-                                opcMenuCoordinador=Number(prompt("Ingresa una opcion de las que aparecen en pantalla\n"))//se usa un bucle while para que cada vez que ingresen un numero mayor a 7 o menor a 1(que son las opciones validas) le diga que por favor ingrese una opcion de las que aparecen en pantalla
-                    except ValueError:
-                        opcMenuCoordinador=Number(prompt("Ingresa una opcion valida (Numero)\n"))
-                        while opcMenuCoordinador<1 or opcMenuCoordinador>9:
-                                opcMenuCoordinador=Number(prompt("Ingresa una opcion de las que aparecen en pantalla\n"))//se usa un bucle while para que cada vez que ingresen un numero mayor a 7 o menor a 1(que son las opciones validas) le diga que por favor ingrese una opcion de las que aparecen en pantalla
+                    opcMenuCoordinador=Number(prompt("Ingresa tu opcion\n"))
+                    while (opcMenuCoordinador<1 || opcMenuCoordinador>9){
+                        opcMenuCoordinador=Number(prompt("Ingresa una opcion de las que aparecen en pantalla\n"))//se usa un bucle while para que cada vez que ingresen un numero mayor a 7 o menor a 1(que son las opciones validas) le diga que por favor ingrese una opcion de las que aparecen en pantallapantalla
+                    }
 
                 case 6:
 
                     console.clear();
                         
-                    confiRepoCoordi="si"
-                    while confiRepoCoordi=="si":
+                    let confiRepoCoordi="si"
+                    while (confiRepoCoordi==="si")
 
                         menuCoordinadorOpc6()
 
-                        bol45=true
-                        while bol45 ==true:
-                            try:
-                                opcReporteCoordinador=Number(prompt("Ingresa tu opcion\n"))
-                                while opcReporteCoordinador<1 or opcReporteCoordinador>7:
-                                    opcReporteCoordinador=Number(prompt("Ingresa una opcion de las que aparecen en pantalla\n"))
-                                bol45=False
-                            except ValueError:
-                                console.log("Ingresa una opcion valida (Numero)")
-
+                        let opcReporteCoordinador=Number(prompt("Ingresa tu opcion\n"))
+                        while (opcReporteCoordinador<1 || opcReporteCoordinador>7){
+                            opcReporteCoordinador=Number(prompt("Ingresa una opcion de las que aparecen en pantalla\n"))
+                        }
                         
-                        if opcReporteCoordinador==1:
-
-                            console.clear();
-
-                            console.log("-----Campers en estado inscrito-----")
-
-                            for j in range(len(campus["Campers"])):
-
-                                if campus["Campers"][j]["estado"]=="Inscrito":
-                                    console.log("Estudiante:", campus["Campers"][j]["nombres"])
-                                    console.log("ID:", campus["Campers"][j]["id"])
-                                    
-                                
-
-                            confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
-                            console.clear();
-
-                        elif opcReporteCoordinador==2:
+                        switch (opcReporteCoordinador) {
                             
-                            console.clear();
-                            console.log("-----Modulos-----")
-                            for m in range(len(campus["Coordinador"][1]["numeroModulo"]))://como todos los campers tiene la informacion de los modulos simplemente se escoge un estudiante y se usa el for para que muestre los modulos 
-                                console.log(m+1,campus["Coordinador"][1]["numeroModulo"][m])
-
-                            bol46=true
-                            while bol46==true:
-                                try:
-                                    moduloRendimiento=Number(prompt("Ingresa el numero del modulo actual\n"))
-                                    while moduloRendimiento<1 or moduloRendimiento>5:
-                                        moduloRendimiento=Number(prompt("Ingresa un modulo de los que aparecen en pantalla\n"))
-
-                                    bol46=False
-                                except ValueError:
-                                    console.log("Ingresa un modulo valido (Numero)")
-
-                                
-                            console.clear();
-                                
-                            console.log("-----Campers que aprobaron-----")
-                            cont1=0
-                            for t in range(len(campus["Campers"])):
-
-                                if campus["Campers"][t]["notaFiltro"][moduloRendimiento-1]>60.0:
-                                    console.log("------------------------------")
-                                    console.log("Estudiante:", campus["Campers"][t]["nombres"])
-                                    console.log("ID:", campus["Campers"][t]["id"])
-                                    console.log("------------------------------")
-                                    cont1=cont1+1
-                                
-                            if cont1==0:
-                                console.log("\nNingun camper aprobo este modulo\n")
-
-                        
-
-
-
-
-                            confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
-                            console.clear();
-
-
-                        elif opcReporteCoordinador==3:
-
-                            console.clear();
-
-                            console.log("-----Trainers-----")
-
-                            for i in range(len(campus["Trainers"])):
-                                console.log("---------------------------")
-                                console.log("Nombres",campus["Trainers"][i]["nombres"])
-                                console.log("ID",campus["Trainers"][i]["id"])
-                                console.log("---------------------------")
-
-                            confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
-                            console.clear();
-
-
-                        elif opcReporteCoordinador==4:
-
-                            console.clear();
-                            console.log("-----Modulos-----")
-                            for m in range(len(campus["Coordinador"][1]["numeroModulo"]))://se usa el for para que muestre los modulos 
-                                console.log(m+1,campus["Coordinador"][1]["numeroModulo"][m])
-
-                            bol46=true
-                            while bol46==true:
-                                try:
-                                    moduloRendimiento=Number(prompt("Ingresa el numero del modulo actual\n"))
-                                    while moduloRendimiento<1 or moduloRendimiento>5:
-                                        moduloRendimiento=Number(prompt("Ingresa un modulo de los que aparecen en pantalla\n"))
-
-                                    bol46=False
-                                except ValueError:
-                                    console.log("Ingresa un modulo valido (Numero)")
-                                
-                            console.clear();
-                                
-                            console.log("-----Campers que tienen bajo rendimiento-----")
-                            cont=0
-                            for t in range(len(campus["Campers"])):
-
-                                if campus["Campers"][t]["riesgo"][moduloRendimiento-1]=="Alto":
-                                    console.log("------------------------------")
-                                    console.log("Estudiante:", campus["Campers"][t]["nombres"])
-                                    console.log("ID:", campus["Campers"][t]["id"])
-                                    console.log("------------------------------")
-                                    cont=cont+1
-                                
-                            if cont==0:
-                                console.log("\nNo hay campers con bajo rendimiento\n")
-
-
-
-
-                            confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
-                            console.clear();
-                            
-                        elif opcReporteCoordinador==5:
-
-                            console.clear();
-
-                            verRuta="si"
-                            while verRuta=="si":
+                            case 1:
+    
                                 console.clear();
-                                console.log("-----Rutas-----")
-                                for r in range(len(campus["Coordinador"][1]["rutas"])):
-
-                                    console.log (campus["Coordinador"][1]["rutas"][r])
-                                
-                                rutaAsociada=prompt("Ingresa la ruta en la que quieres ver a los trainer y campers asociados\n")
-                                while rutaAsociada not in campus["Coordinador"][1]["rutas"]:
+    
+                                console.log("-----Campers en estado inscrito-----")
+    
+                                for (const j of campus["Campers"]){
+    
+                                    if (j["estado"]=="Inscrito"){
+                                        console.log("Estudiante:", j["nombres"])
+                                        console.log("ID:", j["id"])
+                                    }
+                                }
                                     
-                                    rutaAsociada=prompt("Ingresa una ruta de las que aparecen en pantalla\n")
+    
+                                confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
+                                console.clear();
+    
+                            case 2:
                                 
-                                console.log("-----Trainers------")
-                                cont2=0
-                                for x in range(len(campus["Trainers"])):
-                                    
-                                    if rutaAsociada in campus["Trainers"][x]["ruta"]:
-                                        console.log("Nombres:",campus["Trainers"][x]["nombres"])
+                                console.clear();
+                                console.log("-----Modulos-----")
+                                let contador=0
+                                for (const m of campus["Coordinador"][1]["numeroModulo"]){//como todos los campers tiene la informacion de los modulos simplemente se escoge un estudiante y se usa el for para que muestre los modulos 
+                                    console.log(contador+1,m)
+                                    contador+=1
+                                }
 
-                                        console.log("ID:",campus["Trainers"][x]["id"])
-                    
-                                        cont2=cont2+1
+                                moduloRendimiento=Number(prompt("Ingresa el numero del modulo actual\n"))
+                                while (moduloRendimiento<1 || moduloRendimiento>5){
+                                    moduloRendimiento=Number(prompt("Ingresa un modulo de los que aparecen en pantalla\n"))
+                                }
+                                console.clear();
+                                    
+                                console.log("-----Campers que aprobaron-----")
+                                cont1=0
+                                for (const t of campus["Campers"]){
+    
+                                    if (t["notaFiltro"][moduloRendimiento-1]>60.0){
+                                        console.log("------------------------------")
+                                        console.log("Estudiante:", t["nombres"])
+                                        console.log("ID:", t["id"])
+                                        console.log("------------------------------")
+                                        cont1=cont1+1
+                                    }
+                                }
+                                if (cont1===0):
+                                    console.log("\nNingun camper aprobo este modulo\n")
+    
+                            
+    
+    
+    
+    
+                                confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
+                                console.clear();
+    
+    
+                            case 3:
+    
+                                console.clear();
+    
+                                console.log("-----Trainers-----")
+    
+                                for (const i of campus["Trainers"]){
+                                    console.log("---------------------------")
+                                    console.log("Nombres",i["nombres"])
+                                    console.log("ID",i["id"])
+                                    console.log("---------------------------")
+                                }
+                                confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
+                                console.clear();
+    
+    
+                            case 4:
+    
+                                console.clear();
+                                console.log("-----Modulos-----")
+                                contador=0
+                                for (const m of campus["Coordinador"][1]["numeroModulo"]){//se usa el for para que muestre los modulos 
+                                    contador+=1
+                                    console.log(m+1,campus["Coordinador"][1]["numeroModulo"][m])
+                                }
+                                bol46=true
+                                while bol46==true:
+                                    try:
+                                        moduloRendimiento=Number(prompt("Ingresa el numero del modulo actual\n"))
+                                        while moduloRendimiento<1 or moduloRendimiento>5:
+                                            moduloRendimiento=Number(prompt("Ingresa un modulo de los que aparecen en pantalla\n"))
+    
+                                        bol46=False
+                                    except ValueError:
+                                        console.log("Ingresa un modulo valido (Numero)")
+                                    
+                                console.clear();
+                                    
+                                console.log("-----Campers que tienen bajo rendimiento-----")
+                                cont=0
+                                for t in range(len(campus["Campers"])):
+    
+                                    if t["riesgo"][moduloRendimiento-1]=="Alto":
+                                        console.log("------------------------------")
+                                        console.log("Estudiante:", t["nombres"])
+                                        console.log("ID:", t["id"])
+                                        console.log("------------------------------")
+                                        cont=cont+1
+                                    
+                                if cont==0:
+                                    console.log("\nNo hay campers con bajo rendimiento\n")
+    
+    
+    
+    
+                                confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
+                                console.clear();
                                 
-                                if cont2==0:
-                                    console.log("No hay trainers con esa ruta")
-
-                                console.log("-----Campers-----")
-
-                                cont3=0
-                                for x in range(len(campus["Campers"])):
+                            case 5:
+    
+                                console.clear();
+    
+                                verRuta="si"
+                                while verRuta=="si":
+                                    console.clear();
+                                    console.log("-----Rutas-----")
+                                    for r in range(len(campus["Coordinador"][1]["rutas"])):
+    
+                                        console.log (campus["Coordinador"][1]["rutas"][r])
                                     
-                                    if rutaAsociada in campus["Campers"][x]["ruta"]:
-                                        console.log("Nombres:",campus["Campers"][x]["nombres"])
-
-                                        console.log("ID:",campus["Campers"][x]["id"])
+                                    rutaAsociada=prompt("Ingresa la ruta en la que quieres ver a los trainer y campers asociados\n")
+                                    while rutaAsociada not in campus["Coordinador"][1]["rutas"]:
+                                        
+                                        rutaAsociada=prompt("Ingresa una ruta de las que aparecen en pantalla\n")
                                     
-                                        cont3=cont3+1
-                                
-                                if cont3==0:
-                                    console.log("No hay campers con esa ruta")
-
-                                verRuta=prompt("Si quieres ver otra ruta escribe: si, de lo contrario presiona enter\n")
-
-
-                            confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
-                            console.clear();
+                                    console.log("-----Trainers------")
+                                    cont2=0
+                                    for x in range(len(campus["Trainers"])):
+                                        
+                                        if rutaAsociada in campus["Trainers"][x]["ruta"]:
+                                            console.log("Nombres:",campus["Trainers"][x]["nombres"])
+    
+                                            console.log("ID:",campus["Trainers"][x]["id"])
                         
-                        elif opcReporteCoordinador==6: 
-
-                            console.clear();
-
-                            for k in range(len(campus["Coordinador"][1]["numeroModulo"])):
-
-                                console.log("\n///////////////////Modulo",k+1,"///////////////////\n")
-                                console.log("-----Estudiantes que aprobaron-----")
-                                contm1=0
-                                for g in range(len(campus["Campers"])):
-
-                                    if campus["Campers"][g]["riesgo"][k]=="Bajo":
-                                        console.log("-------------------------")
-                                        console.log("Nombres:", campus["Campers"][g]["nombres"])
-                                        console.log("ID:", campus["Campers"][g]["id"])
-                                        console.log("-------------------------")
-                                        contm1=contm1+1
+                                            cont2=cont2+1
                                     
-                                if contm1==0:
+                                    if cont2==0:
+                                        console.log("No hay trainers con esa ruta")
+    
+                                    console.log("-----Campers-----")
+    
+                                    cont3=0
+                                    for x in range(len(campus["Campers"])):
+                                        
+                                        if rutaAsociada in campus["Campers"][x]["ruta"]:
+                                            console.log("Nombres:",campus["Campers"][x]["nombres"])
+    
+                                            console.log("ID:",campus["Campers"][x]["id"])
+                                        
+                                            cont3=cont3+1
+                                    
+                                    if cont3==0:
+                                        console.log("No hay campers con esa ruta")
+    
+                                    verRuta=prompt("Si quieres ver otra ruta escribe: si, de lo contrario presiona enter\n")
+    
+    
+                                confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
+                                console.clear();
+                            
+                            case 6: 
+    
+                                console.clear();
+    
+                                for k in range(len(campus["Coordinador"][1]["numeroModulo"])):
+    
+                                    console.log("\n///////////////////Modulo",k+1,"///////////////////\n")
+                                    console.log("-----Estudiantes que aprobaron-----")
+                                    contm1=0
+                                    for g in range(len(campus["Campers"])):
+    
+                                        if campus["Campers"][g]["riesgo"][k]=="Bajo":
+                                            console.log("-------------------------")
+                                            console.log("Nombres:", campus["Campers"][g]["nombres"])
+                                            console.log("ID:", campus["Campers"][g]["id"])
+                                            console.log("-------------------------")
+                                            contm1=contm1+1
+                                        
+                                    if contm1==0:
+                                    
+                                        console.log("\nNingun estudiante aprobo este modulo\n")
+    
+                                    console.log("-----Estudiantes que reprobaron-----")
+                                    contm1=0
+                                    for q in range(len(campus["Campers"])):
+                                        if campus["Campers"][q]["riesgo"][k]=="Alto":
+                                            console.log("-------------------------")
+                                            console.log("Nombres:", campus["Campers"][q]["nombres"])
+                                            console.log("ID:", campus["Campers"][q]["id"])
+                                            console.log("-------------------------")
+                                            contm1=contm1+1
+                                        
+                                    if contm1==0:
+                                        console.log("\nNingun estudiante reprobo este modulo\n")
+    
                                 
-                                    console.log("\nNingun estudiante aprobo este modulo\n")
+    
+                                confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
+                                console.clear();
+    
+                            case 7:
+    
+                                
+                                
+    
+                                confiRepoCoordi=""        
+                                console.clear();
+                        }
 
-                                console.log("-----Estudiantes que reprobaron-----")
-                                contm1=0
-                                for q in range(len(campus["Campers"])):
-                                    if campus["Campers"][q]["riesgo"][k]=="Alto":
-                                        console.log("-------------------------")
-                                        console.log("Nombres:", campus["Campers"][q]["nombres"])
-                                        console.log("ID:", campus["Campers"][q]["id"])
-                                        console.log("-------------------------")
-                                        contm1=contm1+1
-                                    
-                                if contm1==0:
-                                    console.log("\nNingun estudiante reprobo este modulo\n")
-
-                            
-
-                            confiRepoCoordi=prompt("Si quieres ver otro reporte escribe: si, de lo contrario presiona enter\n")
-                            console.clear();
-
-                        elif opcReporteCoordinador==7:
-
-                            
-                            
-
-                            confiRepoCoordi=""        
-                            console.clear();
 
                     menuCoordinador()
                     try:
