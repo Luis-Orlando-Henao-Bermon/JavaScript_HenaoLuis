@@ -16,6 +16,7 @@ var archivo={
         {
             "nivel": "Secundaria",
             "institucion": "Instituto Secundario",
+            "titulo": "Bachiller",
             "anio_inicio": 2000,
             "anio_fin": 2005
         },
@@ -131,6 +132,36 @@ while (bol===true) {
             
             break;
         case 3:
+            console.log("¿En donde deseas eliminar informacion?\n1. Historial educativo\n2. Experiencia laboral");
+            let eliminar=Number(prompt("Selecciona unaopcion"))
+            switch (eliminar) {
+                case 1:
+                    console.log("----------Titulos----------");
+                    let cont=1
+                    for (const i of archivo["historial_educativo"]) {
+                        console.log("",cont,"Titulo:",i["titulo"]);
+                        cont+=1
+                    }
+                    let IndiceEliminar=prompt("Escribe el numero del titulo que deseas eliminar")
+                    archivo["historial_educativo"].splice(IndiceEliminar-1,1)
+                    break;
+            
+                case 2:
+                    console.log("----------Experiencia laboral----------");
+                    let cont1=1
+                    for (const i of archivo["experiencia_laboral"]) {
+                        console.log("",cont1,"Empresa:",i["empresa"],"\n Puesto:",i["puesto"]);
+                        cont1+=1
+                    }
+                    let IndiceEliminar1=prompt("Escribe el numero del titulo que deseas eliminar")
+                    archivo["experiencia_laboral"].splice(IndiceEliminar1-1,1)
+                    break;
+            
+                default:
+                    console.log("Opcion invalida");
+                    
+                    break;
+            }
             
             break;
         case 4:
