@@ -22,7 +22,7 @@ let campus={
                 "Expulsado",
                 "Retirado"
             ],
-            "estado": "Cursando",
+            "estado": "Inscrito",
             "fechaInicio": "19-03-2024",
             "fechaCierre": "19-03-2025",
             "grupo": "M1",
@@ -819,9 +819,9 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                 case 1://si ecoge la opcion numero 1 hace el siguiente codigo
                     console.clear();
                     console.log("----Usuarios----\nCampers\nTrainers\nCoordinador")//se le muestran los tipos de usuarios que hay y se le preguanta cual de esos quiere cambiar
-                    personaCambiar=prompt("¿Que usuario quieres cambiar?:\n")
+                    var personaCambiar=prompt("¿Que usuario quieres cambiar?:\n")
                     while (!(personaCambiar in campus)){//mientras que el usuario que ingrese no este en campus
-                        let personaCambiar=prompt("Ingresa un usuario de los que aparecen en pantalla (Tienes que escribirlos como se ven ahi):\n")}
+                        personaCambiar=prompt("Ingresa un usuario de los que aparecen en pantalla (Tienes que escribirlos como se ven ahi):\n")}
                     if (personaCambiar=="Campers" || personaCambiar=="Trainers"){
                         console.log("-----",personaCambiar,"-----")
                         for (const b of campus[personaCambiar]){//este for se usa solo para que mire todas las personas que hay en el tipo de usuario quiere el cambiar (ejemplo: Campers)
@@ -849,10 +849,10 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                     var newUser20=prompt("Cual es el nuevo usuario\n")//se pregunta cual va a ser el nuevo usuario
                                     bol50=true
                                     while (bol50==true){
-                                        cont7=0
+                                        var cont7=0
 
                                         for (const e of campus["Campers"]){
-                                            if (newUser20==e["user"]["login"]){
+                                            if (newUser20===e["user"]["login"]){
                                                 cont7=cont7+1
                                             }
                                         }
@@ -861,7 +861,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                                 cont7=cont7+1
                                             }
                                         }
-                                        if (newUser20==campus["Coordinador"][0]["user"]["login"]){
+                                        if (newUser20===campus["Coordinador"][0]["user"]["login"]){
                                             cont7=cont7+1
                                         }
                                         if (cont7===0){
@@ -1010,7 +1010,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
 
@@ -1020,7 +1020,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                     
                                     campus[personaCambiarInfo][posicionCamperCambiar]["numeroIdentificacion"]=identificacionCambiar //despues de haber pedido el nuevo numero de identificacion solo remplaza el que ya estaba por el nuevo
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
 
@@ -1030,7 +1030,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus[personaCambiarInfo][posicionCamperCambiar]["nombres"]=nombreCambiar //se preguntan los nuevos nombres y remplaza al que ya esta  
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
 
@@ -1040,7 +1040,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus[personaCambiarInfo][posicionCamperCambiar]["apellidos"]=apellidoCambiar //se preguntan los nuevos apellidos y remplaza al que ya esta  
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
 
@@ -1050,7 +1050,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus[personaCambiarInfo][posicionCamperCambiar]["direccion"]=direccionCambiar //se pregunta la nueva direccion y remplaza al que ya esta  
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
 
@@ -1060,7 +1060,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus[personaCambiarInfo][posicionCamperCambiar]["acudiente"]=acudienteCambiar //se preguntan los nuevos nombres y apellidos del acudiente y remplaza al que ya esta  
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
 
@@ -1070,7 +1070,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus[personaCambiarInfo][posicionCamperCambiar]["telefonoCelular"]=telefonoCambiar //despues de haber pedido el nuevo telefono movil solo remplaza el que ya estaba por el nuevo
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
                                 
@@ -1079,7 +1079,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                     
                                     campus[personaCambiarInfo][posicionCamperCambiar]["telefonoFijo"]=telefonoFijoCambiar //despues de haber pedido el nuevo numero de identificacion solo remplaza el que ya estaba por el nuevo
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
 
@@ -1092,7 +1092,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                     }
                                     let estadoCambiar=prompt("¿Cual es el nuevo estado?\n")//se pregunta cual es el nuevo estado y se guarda en la variable estadoCambiar
 
-                                    while (!(estadoCambiar  in campus[personaCambiarInfo][posicionCamperCambiar]["tiposDeEstados"])){ //mientras que el estado ingresado por el usuario no este en los tipos de estados le pedira que ingrese un estado valido 
+                                    while (!(campus[personaCambiarInfo][posicionCamperCambiar]["tiposDeEstados"].includes(estadoCambiar))){ //mientras que el estado ingresado por el usuario no este en los tipos de estados le pedira que ingrese un estado valido 
                                         estadoCambiar=prompt("Ingrese un estado valido (Tienes que escribirlo como aparece en los tipos de estado)\n")
                                     }
                                     campus[personaCambiarInfo][posicionCamperCambiar]["estado"]=estadoCambiar// Como ya se sabe cual es el nuevo estado que quiere solo se remplaza el que ya estaba por el que ingreso el usuario
@@ -1121,14 +1121,14 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                             for (const e of campus["Coordinador"][1]["tiposDeRutas"][nRuta]["grupos"])//despues de que el bucle anterior haya mosstrado la primera tuta este bucle muestra los salones que hay en esa ruta 
                                                 console.log("-----Grupos-----")
                                                 console.log(e)
-                                                if (!(e in grupos)){//este if mira si el grupo esta en la lista grupos si no esta lo añade ahi 
+                                                if (!(grupos.includes(e))){//este if mira si el grupo esta en la lista grupos si no esta lo añade ahi 
                                                     grupos.push(e)
                                                 }
                                             nRuta+=1
                                         }
                                         let grupoCambiar=prompt("Ingrese un grupo (Escogelo dependiendo de la ruta que Quieras)\n")
                                         
-                                        while (!(grupoCambiar in grupos)){//mienta que el grupo ingresado no este en la lista gupos le va apedir que ingrese otro grupo
+                                        while (!(grupos.includes(grupoCambiar))){//mienta que el grupo ingresado no este en la lista gupos le va apedir que ingrese otro grupo
                                             grupoCambiar=prompt("Grupo no encontrado ingresa un grupo de los que hay en pantalla \n")
                                         }
                                         let estudiantesG=0//este es un contador para mirar cuantos estudiantes tienen el mismo grupo
@@ -1140,7 +1140,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         while (estudiantesG===33){
                                             grupoCambiar=prompt("Grupo con limites de estudiantes por favor ingresa otro\n")
 
-                                            while (!(grupoCambiar in grupos)){//mientras que el grupo ingresado no este en la lista gupos le va apedir que ingrese otro grupo
+                                            while (!(grupos.includes(grupoCambiar))){//mientras que el grupo ingresado no este en la lista gupos le va apedir que ingrese otro grupo
                                                 grupoCambiar=prompt("Ingresa un grupo de los que hay en pantalla \n")
                                             }
                                             estudiantesG=0
@@ -1163,7 +1163,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                                 }
                                         }
                                     }
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
                                 
@@ -1177,7 +1177,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                     else
                                         console.log("Este camper se encuentra en estado",campus[personaCambiarInfo][posicionCamperCambiar]["estado"], "por lo tanto no tiene fecha de inicio")
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
                                 
@@ -1193,7 +1193,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         console.log("Este camper se encuentra en estado",campus[personaCambiarInfo][posicionCamperCambiar]["estado"], "por lo tanto no tiene fecha de inicio")
 
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
 
@@ -1212,7 +1212,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                             for (const t of campus["Coordinador"][1]["tiposDeRutas"][nConteo]["grupos"]){//despues de que el bucle anterior haya mosstrado la primera tuta este bucle muestra los salones que hay en esa ruta 
                                                 console.log("-----Grupos-----")
                                                 console.log(t)
-                                                if (!(t in grupos)){//este if mira si el grupo esta en la lista grupos si no esta lo añade ahi 
+                                                if (!(grupos.includes(t))){//este if mira si el grupo esta en la lista grupos si no esta lo añade ahi 
                                                     grupos.push(t)
                                                 }
                                             }
@@ -1220,7 +1220,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         }
                                         let grupoCambiar=prompt("Ingrese un grupo (Escogelo dependiendo de la ruta que Quieras)\n")
                                         
-                                        while (!(grupoCambiar in grupos)){//mienta que el grupo ingresado no este en la lista gupos le va apedir que ingrese otro grupo
+                                        while (!(grupos.includes(grupoCambiar))){//mienta que el grupo ingresado no este en la lista gupos le va apedir que ingrese otro grupo
                                             grupoCambiar=prompt("Grupo no encontrado ingresa un grupo de los que hay en pantalla \n")
                                         }
                                         
@@ -1234,7 +1234,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         while (estudiantesG===33){//mientras que el contadopr de estudiantes en un grupo sea 33 (es la cantidad maxima de estudiantes) le va a decir que el grupo esta lleno y que tiene que ingresar otro
                                             grupoCambiar=prompt("Grupo con limites de estudiantes por favor ingresa otro\n")
 
-                                            while (!(grupoCambiar in grupos)){//mienta que el grupo ingresado no este en la lista gupos le va apedir que ingrese otro grupo
+                                            while (!(grupos.includes(grupoCambiar))){//mienta que el grupo ingresado no este en la lista gupos le va apedir que ingrese otro grupo
                                                 grupoCambiar=prompt("Ingresa un grupo de los que hay en pantalla \n")
                                             }
                                             estudiantesG=0
@@ -1270,7 +1270,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         console.log("Este camper se encuentra en estado",campus[personaCambiarInfo][posicionCamperCambiar]["estado"], "por lo tanto no tiene grupo")
 
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
 
@@ -1292,7 +1292,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                     else
                                         console.log("Este camper se encuentra en estado",campus[personaCambiarInfo][posicionCamperCambiar]["estado"], "por lo tanto no tiene modulo actual")
 
-                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
+                                    confiInfor=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//se pregunta si quiere cambiar algo mas y si dice que si se mostrara el menu anterior ya que mientras que confiInfor sea si se repetira el bucle while que contiene el menu de opciones de cambio
                                     console.clear();
                                     break;
                                 
@@ -1311,12 +1311,12 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                             console.log("Nombre:",campus["Trainers"][x]["nombres"])//se muestran los nombres de los trainers y el id 
                             console.log("ID:",campus["Trainers"][x]["id"])        
                             console.log("----------------------")
-                            if(!( x["id"] in idTrainer)){//mirando todas las pociciones de los trainers en el id si ese id no esta en idTrainer se agrega para asi tener todos los id que hay en trainers
+                            if(!(idTrainer.includes(x["id"]))){//mirando todas las pociciones de los trainers en el id si ese id no esta en idTrainer se agrega para asi tener todos los id que hay en trainers
                                 idTrainer.push(campus["Trainers"][x]["id"])
                             }
                         }
                         let idTrainerCambiar=Number(prompt("Ingresa el ID del trainer a cambiar\n"))//se pide el id del trainer que quiere cambiar 
-                        while (!(idTrainerCambiar in idTrainer)){//mientras que el id de trainer no este en idTrainer se dice que id no encontrado y se pide que ingrese uno valido
+                        while (!(idTrainer.includes(idTrainerCambiar))){//mientras que el id de trainer no este en idTrainer se dice que id no encontrado y se pide que ingrese uno valido
                             idTrainerCambiar=Number(prompt("ID no encontrado por favor escribe uno valido\n"))
                         }
                         for (const b of campus["Trainers"]){//depues de ver que el id si esta en los trainers se usa este bucle for para saber la posicion del trainer con ese id 
@@ -1370,7 +1370,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                     
                                     campus[personaCambiarInfo][posicionTrainerCambiar]["id"]=idTrainerCambiar//despues de haber pedido el nuevo id solo remplaza el que ya esta por el nuevo
                                         
-                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
+                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
                                     console.clear();
                                     break;
                                 
@@ -1379,18 +1379,18 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus[personaCambiarInfo][posicionTrainerCambiar]["numeroIdentificacion"]= nidCambioTrainer
 
-                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
+                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
                                     console.clear();
                                     break;
                                 
                                 case 3:
                                     //si escoge la opcion 3 le pide los nuevos nombres y los remplaza por el que ya estaba
 
-                                    nombreCambioTrainer= prompt("Ingresa los nuevos nombres\n")
+                                    var nombreCambioTrainer= prompt("Ingresa los nuevos nombres\n")
 
                                     campus[personaCambiarInfo][posicionTrainerCambiar]["nombres"]=nombreCambioTrainer
 
-                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
+                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
                                     console.clear();
                                     break;
                                 
@@ -1401,7 +1401,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus[personaCambiarInfo][posicionTrainerCambiar]["apellidos"]=apellidoCambioTrainer
 
-                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
+                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
                                     console.clear();
                                     break;
                                 
@@ -1413,7 +1413,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus[personaCambiarInfo][posicionTrainerCambiar]["direccion"]=direccionCambioTrainer
 
-                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
+                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
                                     console.clear();
                                     break;
                                 
@@ -1424,7 +1424,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
     
                                     campus[personaCambiarInfo][posicionTrainerCambiar]["telefonoCelular"]=TelefonoCelularTrainerCambiar
 
-                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
+                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
                                     console.clear();
                                     break;
 
@@ -1436,7 +1436,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         
                                     campus[personaCambiarInfo][posicionTrainerCambiar]["telefonoFijo"]=TelefonoFijoTrainerCambiar
 
-                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
+                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
                                     console.clear();
                                     break;
 
@@ -1450,7 +1450,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                     }
                                     rutaTrainerCambiar=prompt("Ingrese la nueva ruta\n")
 
-                                    while (!(rutaTrainerCambiar in campus["Coordinador"][1]["rutas"])){
+                                    while (!(campus["Coordinador"][1]["rutas"].includes(rutaTrainerCambiar))){
                                         
                                         rutaTrainerCambiar=prompt("Ingrese una ruta valida (Tienes que escibirla como aparece en pantalla)\n")
                                     }
@@ -1466,14 +1466,14 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                     grupoRuta=[]
                                     for (const t of campus["Coordinador"][1]["tiposDeRutas"][posicionRutaTrainer]){
                                         console.log(t)
-                                        if (!(t in grupoRuta)){
+                                        if (!(grupoRuta.includes(t))){
                                             grupoRuta.push(t)
                                         }
                                     }
 
                                     grupoAgregar=prompt("Escoja un grupo\n")
 
-                                    while (!(grupoAgregar in grupoRuta)){
+                                    while (!(grupoRuta.includes(grupoAgregar))){
                                         grupoAgregar=prompt("Escoja un grupo de los que hay en pantalla (tienes que escribirlo como esta ahi)\n")
                                     }
 
@@ -1494,7 +1494,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         }
                                     }
                                     
-                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
+                                    confiInforTrainer=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")//aca es donde se pregunta si quiere cambiar algo mas para saber si se repite el bucle o no
                                     console.clear();
                                     break;
                                 
@@ -1509,7 +1509,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                     if (personaCambiarInfo==="Coordinador")
                         //como solo hay un solo coordinador directamente se le pregunta que quiere cambiar de esa informacion
 
-                        confiInforCoordinador="si"
+                        var confiInforCoordinador="si"
                         while (confiInforCoordinador==="si"){//este while se usa para saber si quiere cambiar mas cosas de los datos y si quiere hacerlo se repite este bucle 
 
                             console.log("-----Informacion que se puede cambiar-----\n1. ID\n2. Numero de identificacion\n3. Nombres\n4. Apellidos\n5. Direccion\n6. Telefono Celular\n7. Telefono Fijo\n8. Volver al menu anterior ")//se muestran las opciones que puede modificar
@@ -1562,7 +1562,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         
                                     campus["Coordinador"][0]["numeroIdentificacion"]=identificacionCambioCoordinador
 
-                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")
+                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")
                                     console.clear();
                                     break;
 
@@ -1574,7 +1574,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus["Coordinador"][0]["nombres"]=nombreCambioCoordinador
 
-                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")
+                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")
                                     console.clear();
                                     break;
 
@@ -1586,7 +1586,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus["Coordinador"][0]["apellidos"]=apellidoCambioCoordinador
 
-                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")
+                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")
                                     console.clear();
                                     break;
                                 
@@ -1598,7 +1598,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
 
                                     campus["Coordinador"][0]["direccion"]=direccionCambioCoordinador
 
-                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")
+                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")
                                     console.clear();
                                     break;
 
@@ -1609,7 +1609,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         
                                     campus["Coordinador"][0]["telefonoCelular"]=celularCambioCoordinador
 
-                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")
+                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")
                                     console.clear();
                                     break;
                                 
@@ -1620,7 +1620,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         
                                     campus["Coordinador"][0]["telefonoFijo"]=fijoCambioCoordinador
 
-                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contraio preciona enter\n")
+                                    confiInforCoordinador=prompt("Si quieres cambiar algo mas escribe: si, de lo contrario preciona enter\n")
                                     console.clear(); 
                                     break;
 
@@ -1644,9 +1644,9 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                     //prueba de admision pedir nota teoria y nota practica y sacar un promedio de las dos y si el promedio es mayor a 60 lo aprueba 
                     console.clear();
                     
-                    let notaAprobacion=[]
+                    var notaAprobacion=[]
                     console.log("-----Campers con estado inscrito-----")//se muestran los campers con sus id y guarda los id en la lista nota de aprobación. 
-                    let cont0=0
+                    var cont0=0
                     for (const f of campus["Campers"]){
                         if (f["estado"]==="Inscrito"){
                             console.log("----------------------------")
@@ -1659,9 +1659,9 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                             cont0+=1
                         }
                     }
-                    if (cont0>1){
+                    if (cont0>=1){
                         let idNotaFiltro=Number(prompt("Ingresa el ID del camper al que le deseas agregar nota de aprobación\n"))//se pide el id del camper al que se le quiere agregar la nota y si el camper no esta en la lista notaAprobacion le pida que ingrese uno valido
-                        while (!(idNotaFiltro in notaAprobacion)){
+                        while (!(notaAprobacion.includes(idNotaFiltro))){
                             idNotaFiltro=Number(prompt("ID no encontrado por favor ingresa uno valido\n"))
                         }
                         let conteo=0
@@ -1709,15 +1709,16 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                 for (const t of campus["Coordinador"][1]["tiposDeRutas"][conteo]["grupos"]){//despues de que el bucle anterior haya mosstrado la primera tuta este bucle muestra los salones que hay en esa ruta 
                                     console.log("-----Grupos-----")
                                     console.log(t)
-                                    if (!(t in grupos)){//este if mira si el grupo esta en la lista grupos si no esta lo añade ahi 
+                                    if (!(grupos.includes(t))){//este if mira si el grupo esta en la lista grupos si no esta lo añade ahi 
                                         grupos.push(t)
                                     }
                                 }
+                                conteo+=1
                             }
                             
                             grupoCambiar=prompt("Ingrese un grupo (Escogelo dependiendo de la ruta que Quieras)\n")
                             
-                            while (!(grupoCambiar in grupos)){//mienta que el grupo ingresado no este en la lista gupos le va apedir que ingrese otro grupo
+                            while (!(grupos.includes(grupoCambiar))){//mienta que el grupo ingresado no este en la lista gupos le va apedir que ingrese otro grupo
                                 grupoCambiar=prompt("Grupo no encontrado ingresa un grupo de los que hay en pantalla \n")
                             }
                             let estudiantesG=0//este es un contador para mirar cuantos estudiantes tienen el mismo grupo
@@ -1780,13 +1781,13 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                         console.log("Nombre",f["nombres"])
                         console.log("ID",f["id"])
                         console.log("----------------------------")
-                        if (!(f["id"] in notaAprobacion)){
+                        if (!(notaAprobacion.includes(f["id"]))){
                             notaAprobacion.push(f["id"])
                         }
 
                     }
                     idNotaFiltro=Number(prompt("Ingresa el ID del camper al que le quieres agregar la nota\n"))//se pide el id del camper al que se le quiere agregar la nota y si el camper no esta en la lista notaAprobacion le pida que ingrese uno valido
-                    while (!(idNotaFiltro in notaAprobacion)){
+                    while (!(notaAprobacion.includes(idNotaFiltro))){
                         idNotaFiltro=Number(prompt("ID no encontrado por favor ingresa uno valido\n"))
                     }
 
@@ -1804,10 +1805,10 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                         console.log("-----Modulos-----")//se muestran los modulos que hay (esa informacion la tiene cada uno de los campers)
                         conteo=0
                         for (const g of campus["Coordinador"][1]["numeroModulo"]){
-                            console.log(conteo+1,g)
+                            console.log(conteo,g)
                             conteo+=1
                         }
-                        let moduloAgregarNota=Number(prompt("Ingrese el modulo al que le quiere agregar la nota de modulo (Ingrese el numero)\n"))//se pide el modulo en el cual quiere agregar nota de filtro y si dice una nota diferente a las que hay en pantalla le pide que ingrese una valida
+                        var moduloAgregarNota=Number(prompt("Ingrese el modulo al que le quiere agregar la nota de modulo (Ingrese el numero)\n"))//se pide el modulo en el cual quiere agregar nota de filtro y si dice una nota diferente a las que hay en pantalla le pide que ingrese una valida
                         while (moduloAgregarNota<1 || moduloAgregarNota>5){
                             moduloAgregarNota=Number(prompt("Ingrese un modulo de los que aparecen en pantalla\n"))
                         }
@@ -2029,7 +2030,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                                         console.log (r)
                                     }
                                     let rutaAsociada=prompt("Ingresa la ruta en la que quieres ver a los trainer y campers asociados\n")
-                                    while(!( rutaAsociada in campus["Coordinador"][1]["rutas"])){
+                                    while(!(campus["Coordinador"][1]["rutas"].includes(rutaAsociada))){
                                         
                                         rutaAsociada=prompt("Ingresa una ruta de las que aparecen en pantalla\n")
                                     }
@@ -2145,7 +2146,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                         }
                         let grupoRutaAgregar=prompt("Ingresa un grupo para esta ruta\n")
 
-                        while (!(grupoRutaAgregar in campus["Coordinador"][1]["grupos"])){
+                        while (!(campus["Coordinador"][1]["grupos"].includes(grupoRutaAgregar))){
                             grupoRutaAgregar=prompt("Ingresa un grupo de los que hay en pantalla (Tienes que escribirlo como se ve ahi)\n")
                         }
                         bol48=true
@@ -2162,7 +2163,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                             else 
                                 grupoRutaAgregar=prompt("Ese grupo ya tiene ruta por favor ingresa otro\n")
 
-                                while (!(grupoRutaAgregar in campus["Coordinador"][1]["grupos"]))
+                                while (!(campus["Coordinador"][1]["grupos"]).includes(grupoRutaAgregar))
                                     grupoRutaAgregar=prompt("Ingresa un grupo de los que hay en pantalla (Tienes que escribirlo como se ve ahi)\n")
                         }
                         campus["Coordinador"][1]["tiposDeRutas"][campus["Coordinador"][1]["rutas"].length-1]["grupos"].push(grupoRutaAgregar)
@@ -2174,7 +2175,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                         //como se puede agregar 1 materia se pide solo 1
                         let modulo3Agregar1=prompt("Ingresa la materia principal que quieres agregar\n")//se pide la primera materia del modulo tres 
 
-                        while (!(modulo3Agregar1 in campus["Coordinador"][1]["materiasM3"])){// mientras la materia ingresada no se encuentre en materiasM3 se le pedire que ingrese una materia valida  
+                        while (!(campus["Coordinador"][1]["materiasM3"].includes(modulo3Agregar1))){// mientras la materia ingresada no se encuentre en materiasM3 se le pedire que ingrese una materia valida  
                             modulo3Agregar1=prompt("Ingresa una materia valida (Tienes que escribirla como aparece en Materias del modulo 3)\n")
                         }
                         campus["Coordinador"][1]["tiposDeRutas"][campus["Coordinador"][1]["rutas"].length-1]["modulos"][2].push(modulo3Agregar1)
@@ -2188,13 +2189,13 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                             console.log(i)
                         }
                         let modulo4Agregar1=prompt("Ingresa la materia principal que quieres agregar\n")//se pide la primera materia del modulo 4
-                        while (!(modulo4Agregar1 in campus["Coordinador"][1]["materiasM4"])){// mientras la materia ingresada no se encuentre en materiasM3 se le pedire que ingrese una materia valida  
+                        while (!(campus["Coordinador"][1]["materiasM4"].includes(modulo4Agregar1))){// mientras la materia ingresada no se encuentre en materiasM3 se le pedire que ingrese una materia valida  
                             modulo4Agregar1=prompt("Ingresa una materia valida (Tienes que escribirla como aparece en Materias del modulo 3)\n")
                         }
                         campus["Coordinador"][1]["tiposDeRutas"][campus["Coordinador"][1]["rutas"].length-1]["modulos"][3].push(modulo4Agregar1)
 
-                        modulo4Agregar2=prompt("Ingresa las materia secundaria que quieres agregar\n")//se pide la segunda materia del modulo 4
-                        while (!(modulo4Agregar2 in campus["Coordinador"][1]["materiasM4"])){// mientras la materia ingresada no se encuentre en materiasM3 se le pedire que ingrese una materia valida  
+                        var modulo4Agregar2=prompt("Ingresa las materia secundaria que quieres agregar\n")//se pide la segunda materia del modulo 4
+                        while (!(campus["Coordinador"][1]["materiasM4"].includes(modulo4Agregar2))){// mientras la materia ingresada no se encuentre en materiasM3 se le pedire que ingrese una materia valida  
                             modulo4Agregar2=prompt("Ingresa una materia valida (Tienes que escribirla como aparece en Materias del modulo 3)\n")
                         }
                         campus["Coordinador"][1]["tiposDeRutas"][campus["Coordinador"][1]["rutas"].length-1]["modulos"][3].push(modulo4Agregar2)
@@ -2208,7 +2209,7 @@ while (x===0){//si no hay nadie con el usuario ingresado x seguira siendo 0 por 
                             console.log(i)
                         }
                         let modulo5Agregar1=prompt("Ingresa las materia primaria que quieres agregar\n")//se pide la primera materia del modulo 5
-                        while (!(modulo5Agregar1 in campus["Coordinador"][1]["materiasM5"])){// mientras la materia ingresada no se encuentre en materiasM3 se le pedire que ingrese una materia valida  
+                        while (!(campus["Coordinador"][1]["materiasM5"].includes(modulo5Agregar1))){// mientras la materia ingresada no se encuentre en materiasM3 se le pedire que ingrese una materia valida  
                             modulo5Agregar1=prompt("Ingresa una materia valida (Tienes que escribirla como aparece en Materias del modulo 3)\n")
                         }
                         campus["Coordinador"][1]["tiposDeRutas"][campus["Coordinador"][1]["rutas"].length-1]["modulos"][4].push(modulo5Agregar1)
