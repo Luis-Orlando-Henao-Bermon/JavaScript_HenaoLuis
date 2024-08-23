@@ -26,3 +26,5 @@ function superDigito(n,k) {
 let num1=Number(prompt("ingresa el numero al que se quiere sacar el digito"))
 let num2=Number(prompt("ingresa la cantidad de repeticiones"))
 superDigito(num1,num2)
+
+//Desarrollado por Luis Henao
