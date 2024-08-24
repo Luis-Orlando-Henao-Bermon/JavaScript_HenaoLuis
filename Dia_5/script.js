@@ -7,6 +7,22 @@ var archivo={
         "price": 999.99,
         "quantityInStock": 50,
         "supplierId": 101
+      },
+      {
+        "id": 2,
+        "name": "Iphone 12",
+        "category": "Electronics",
+        "price": 499.99,
+        "quantityInStock": 50,
+        "supplierId": 101
+      },
+      {
+        "id": 30,
+        "name": "Glasses",
+        "category": "Home",
+        "price": 39.99,
+        "quantityInStock": 50,
+        "supplierId": 101
       }
     ],
     "suppliers": [
@@ -30,30 +46,181 @@ var archivo={
       },
       {
         "orderId": 10012,
-        "productId": 1,
+        "productId": 2,
         "quantity": 5,
-        "orderDate": "2024-8-23",
-        "status": "Delivered"
+        "orderDate": "2024-8-24",
+        "status": "Sent"
       },
       {
         "orderId": 10013,
-        "productId": 1,
-        "quantity": 5,
+        "productId": 30,
+        "quantity": 2,
         "orderDate": "2024-8-23",
         "status": "Delivered"
       }
     ]
   }
 
-function filterOrders(criteria) {
-    let busca = archivo.orders.filter(n => n.orderDate == "2024-8-23")
-    for (const i of busca) {
-        console.log(i.orderId);
+  function searchProducts(query) {//funcion de buscar productos
+    switch (query) {
+      case 1:
+        console.log("------Productos------");
+        let productosF=[];
+        for (const i of archivo.products) {
+          console.log(`ID del producto: ${i.id} \nNombre: ${i.name}\nPrecio: ${i.price}\nCantidad en stok: ${i.quantityInStock}\n-------------------------------------`);
+        }
         
+        break;
+    
+      case 2:
+        console.log("---------Categorias---------");
+        var cat=[];
+        var contador=1;
+        for (const i of archivo.products) {
+          if (!(cat.includes(i.category ))) {
+            cat.push(i.category)
+            console.log(contador,i.category);
+            contador+=1
+          }
+        }
+        let BusquedaC= Number(prompt("Ingrese el numero de la categoria por la que quiere hacer el filtrado"))
+        console.clear()
+        for (const i of archivo.products) {
+          if (i.category===cat[BusquedaC-1]) {
+            console.log(`ID del producto: ${i.id} \nNombre: ${i.name}\nPrecio: ${i.price}\nCantidad en stok: ${i.quantityInStock}\n-------------------------------------`);
+          }
+          
+        }
+        break;
+    
+      case 3:
+        console.log("---------Proveedores---------");
+        for (const i of archivo.suppliers) {
+          console.log(`ID del proveedor: ${i.id} \nNombre: ${i.name}`);
+        }
+        let BusquedaP= Number(prompt("Ingrese el ID del proovedor por el que quieres hacer el filtrado"))
+        console.clear()
+        var contador=1;
+        for (const i of archivo.products) {
+          if (i.supplierId===BusquedaP) {
+            console.log(`ID del producto: ${i.id} \nNombre: ${i.name}\nPrecio: ${i.price}\nCantidad en stok: ${i.quantityInStock}\n-------------------------------------`);
+            contador=0;
+          }
+        }
+        if (contador===1) {
+          console.log("No hay productos con ese proveedor");
+        }
+        break;
+    
+      default:
+        console.log("Opcion invalida");
+        
+        break;
     }
     
+  }
+function filterOrders(criteria) {//Funcion de filtrar productos
+  switch (criteria) {
+    case 1:
+      console.log("-------Estados-------\n1. Delivered\n2. Sent");
+      let estado=Number(prompt("Ingresa el estado por el cual quieres hacer el filtrado"))
+      switch (estado) {
+        case 1:
+          var filterE = archivo.orders.filter(n => n.status == "Delivered");
+          if (filterE.length===0) {
+            console.log("No hay productos con ese estado");
+          }
+          else{
+            for (const i of filterE) {
+              console.log(`ID de la orden: ${i.orderId}`)
+              for (const e of archivo.products) {
+                if (e.id===i.productId) {
+                  console.log(`Nombre del producto: ${e.name}`);
+                }
+              }
+            }
+          }
+
+
+          break;
+      
+        case 2:
+          filterE = archivo.orders.filter(n => n.status == "Sent");
+          if (filterE.length===0) {
+            console.log("No hay productos con ese estado");
+          }
+          else{
+            for (const i of filterE) {
+              console.log(`ID de la orden: ${i.orderId}`)
+              for (const e of archivo.products) {
+                if (e.id===i.productId) {
+                  console.log(`Nombre del producto: ${e.name}`);
+                }
+              }
+            }
+          }
+          break;
+      
+        default:
+          console.log("Opcion Invalida");
+          
+          break;
+      }
+      
+      break;
+      
+    case 2:
+      let date=String(prompt("Ingresa la fecha por la que quieres hacer el filtrado en el siguiente formato: (2024-8-23)"));
+      
+      let filterF = archivo.orders.filter(n => n.orderDate == date);
+      if (filterF.length==0) {
+        console.log("No hay datos con esa fecha");
+        
+      } else {
+        for (const i of filterF) {
+          console.log(`ID de la orden: ${i.orderId}`)
+          for (const e of archivo.products) {
+            if (e.id===i.productId) {
+              console.log(`Nombre del producto: ${e.name}`);
+            }
+          }
+        }
+      }
+      break;
+  
+    case 3:
+      console.log("------Productos------");
+      let productosF=[];
+      for (const i of archivo.products) {
+        console.log(`ID del producto: ${i.id} ${i.name}`);
+        productosF.push(i.id)
+      }
+      let produc =Number(prompt("Ingresa el id del producto por el cual quieres hacer el filtrado"))
+      console.clear()
+      let filterP=archivo.orders.filter(n=> n.productId == produc)
+      if (filterP.length===0) {
+        console.log("No hay pedidos con ese producto");
+        
+      } else {
+        for (const i of filterP) {
+          for (const e of archivo.products) {
+            if (i.productId===e.id) {
+              console.log(`ID del producto: ${e.id}\nNombre Del producto: ${e.name}\nCategoria: ${e.category}\nPrecio: ${e.price}\nCantidad Comprada ${i.quantity}\nFecha del pedido ${i.orderDate}\n------------------------`);
+            }
+          }
+        }
+      }
+
+      break;
+  
+    default:
+      console.log("Opcion invalida");
+      
+      break;
+  }
+  
 }
-filterOrders()
+
 
 
 function date() {
@@ -65,4 +232,73 @@ function date() {
     return fecha;
 }
 
-console.log(date());
+bol=true;
+while (bol===true) {
+  
+  console.clear()
+  console.log("1. Gestionar productos\n2. Gestionar proveedores\n3. Gestionar pedidos\n4. Gestionar existencias\n5. Generacion de informes\n6. Busqueda y filtrado\n7. Salir");
+  let opc=Number(prompt("Ingresa una opcion"))
+  console.clear()
+  switch (opc) {
+    case 1:
+      
+      break;
+  
+    case 2:
+      
+      break;
+  
+    case 3:
+      
+      break;
+  
+    case 4:
+      
+      break;
+  
+    case 5:
+      
+      break;
+  
+    case 6:
+      console.log("1. Buscar productos\n2. Filtrar pedidos");
+      let busquedaFiltro=Number(prompt("Ingresa una opcion"))
+      console.clear()
+      switch (busquedaFiltro) {
+        case 1:
+          console.log("1. Nombre\n2. Categoria\n3. Proveedor");
+          let query=Number(prompt("¿Como quieres buscar los productos?"))
+          console.clear()
+          searchProducts(query)
+          prompt("Preciona Enter Para continuar")
+          
+          break;
+      
+        case 2:
+          console.log("1. Estado\n2. Fecha\n3. Producto");
+          let criteria=Number(prompt("¿Como quieres filtrar los productos?"))
+          console.clear()
+          filterOrders(criteria)
+          prompt("Preciona Enter Para continuar")
+          break;
+      
+        default:
+          console.log("Opcion invalida");
+          
+          break;
+      }
+      
+      break;
+  
+    case 7:
+      console.log("Gracias por usar el programa");
+      bol=false   
+      
+      break;
+  
+    default:
+      console.log("Opcion invalida");
+      
+      break;
+  }
+}
