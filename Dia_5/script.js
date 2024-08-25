@@ -17,7 +17,7 @@ var archivo={
         "supplierId": 101
       },
       {
-        "id": 30,
+        "id": 3,
         "name": "Glasses",
         "category": "Home",
         "price": 39.99,
@@ -392,6 +392,31 @@ function updateSupplier(id, newDetails){//!Funcion para actualizar informacion d
   }
   
 }
+
+function addProduct(product) {//!funcion para agregar productos
+  archivo.products.push(product)
+}
+
+function deleteProduct(id) {
+  archivo.products=archivo.products.filter(i =>i.id!==id)
+
+}
+
+function viewProducts(){
+  for (const i of archivo.products) {
+
+    console.log(`ID del producto: ${i.id}\nNombre: ${i.name}\nCategoria: ${i.category}\nPrecio: ${i.price}\nCantidad en stock: ${i.quantityInStock}\nID del proveedor: ${i.supplierId}\nNombre del proveedor: ${archivo.suppliers.find(x=>x.id===i.supplierId).name}`);
+    
+  }
+  
+  
+}
+
+function updateProduct(id, newDetails){//!Funcion para cambiar el precio de un producto
+  archivo.products.find(i=>i.id===id).price=newDetails
+  
+}
+
 function date() {// !crear la fecha en la que se ejecuta el programa
     let hola =new Date()
     let mes =Number(hola.getMonth())
@@ -416,11 +441,84 @@ while (bol===true) {
   console.clear()
   switch (opc) {
     case 1:
+      console.log("1. Agregar Producto\n2. Eliminar Producto\n3. Modificar Precio del producto \n4. Ver Productos");
+      var opc3=Number(prompt("Ingresa una opcion"))
+      console.clear()
+      switch (opc3) {
+        case 1:
+          
+
+          let idProducto=archivo.products.length+1;
+          let nombre= prompt("Ingresa el nombre del producto");
+          let categoria= prompt("Ingresa ls categoria del producto");
+          let precio=Number(prompt("Ingresa el precio del producto"));
+          let cantidad=Number(prompt("Ingresa la cantidad del producto")); 
+          console.clear()
+          for (const i of archivo.suppliers) {
+            let prod=archivo.products.find(c=>c.id===i.productId)
+            console.log(`ID del proveedor: ${i.id}\nNombre: ${i.name}`);
+          }
+          
+          var id=Number(prompt("Ingresa el id del proveedor")); 
+          while (!(archivo.suppliers.some(i=>i.id===id))) {
+            id=Number(prompt("ID no encontrado por favor ingresa uno valido"))
+          }
+
+          let product={"id":idProducto,"name":nombre,"category":categoria,"price":precio,"quantityInStock":cantidad,"supplierId":id}
+          addProduct(product)
+
+          break;
       
+        case 2:
+          console.log("---------Productos----------");
+          
+          viewProducts()
+          var id=Number(prompt("Ingresa el id del producto que deseas eliminar"))
+          while (!(archivo.products.some(i=>i.id===id))) {
+            id=Number(prompt("ID no encontrado por favor ingresa uno valido"))
+          }
+          deleteProduct(id)
+          
+          prompt("Preciona Enter Para continuar")
+          
+          break;
+          
+        case 3:
+          console.log("---------Products----------");
+          
+          viewProducts()
+          id=Number(prompt("Ingresa el id del Producto al que deseas modificar el precio"))
+          while (!(archivo.products.some(i=>i.id===id))) {
+            id=Number(prompt("ID no encontrado por favor ingresa uno valido"))
+          }
+          var newDetails=Number(prompt("Cual es el nuevo precio del producto"))
+          while (isNaN(newDetails)===true) {
+            newDetails=Number(prompt("Debes ingresar un valor numerico para el precio"))
+          }
+          
+          updateProduct(id, newDetails)
+         
+          prompt("Preciona Enter Para continuar")
+
+          break;
+          
+        case 4:
+          viewProducts()
+          prompt("Preciona Enter Para continuar")
+
+          break;
+          
+        default:
+
+          console.log("Opcion invalida");
+          prompt("Preciona Enter Para continuar")
+          
+          break;
+      }
       break;
     case 2:
       console.log("1. Agregar Poveedor\n2. Eliminar Proveedor\n3. Modificar Informacion de proveedor \n4. Ver proveedores");
-      var opc3=Number(prompt("Ingresa una opcion"))
+      opc3=Number(prompt("Ingresa una opcion"))
       console.clear()
       switch (opc3) {
         case 1:
@@ -441,7 +539,6 @@ while (bol===true) {
           console.log("---------Proveedores----------");
           
           for (const i of archivo.suppliers) {
-            let prod=archivo.products.find(c=>c.id===i.productId)
             console.log(`ID del proveedor: ${i.id}\nNombre: ${i.name}\nNumero de telefono: ${i.contactInfo.phone}\nCorreo electronico: ${i.contactInfo.email}\nDireccion: ${i.contactInfo.address}`);
           }
           var id=Number(prompt("Ingresa el id del proveedor que deseas eliminar"))
@@ -460,13 +557,13 @@ while (bol===true) {
           for (const i of archivo.suppliers) {
             console.log(`ID del proveedor: ${i.id}\nNombre: ${i.name}\nNumero de telefono: ${i.contactInfo.phone}\nCorreo electronico: ${i.contactInfo.email}\nDireccion: ${i.contactInfo.address}`);
           }
-          id=Number(prompt("Ingresa el id del pedido que deseas modificar"))
+          id=Number(prompt("Ingresa el id del Proveedor que deseas modificar"))
           while (!(archivo.suppliers.some(i=>i.id===id))) {
             id=Number(prompt("ID no encontrado por favor ingresa uno valido"))
           }
           console.clear()
           console.log("1. Nombre\n2. Telefono\n3. Correo electronico\n4. Direccion");
-          let newDetails= Number(prompt("¿Que detalle quieres cambiar del pedido?"))
+          let newDetails= Number(prompt("¿Que detalle quieres cambiar del Proveedor?"))
           if (newDetails>=1 || newDetails<=4) {
             
             updateSupplier(id, newDetails)
