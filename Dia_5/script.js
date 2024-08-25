@@ -60,14 +60,14 @@ var archivo={
       },
       {
         "orderId": 1004,
-        "productId": 30,
+        "productId": 3,
         "quantity": 20,
         "orderDate": "2024-08-23",
         "status": "Delivered"
       },
       {
         "orderId": 1005,
-        "productId": 30,
+        "productId": 3,
         "quantity": 2,
         "orderDate": "2024-08-23",
         "status": "Delivered"
@@ -76,20 +76,34 @@ var archivo={
   }
 function generateSalesReport(startDate, endDate) {// !funcion de generar informe de ventas
   let informeVentas = archivo.orders.filter(n => n.orderDate >=startDate && n.orderDate<=endDate);
+
   
   if (informeVentas.length==0) {
     console.log("No hay Ventas en esa fecha");
     
   } else {
-    var ingresosT=0
+    var ingresosT = 0;
+    var productosVentas = {}; // diccionario para almacenar desglosamiento de productos
+
     for (const i of informeVentas) {
       for (const e of archivo.products) {
-        if (i.productId===e.id) {
-          ingresosT+=(i.quantity*e.price)
+        if (i.productId === e.id) {
+          ingresosT += (i.quantity * e.price);
+          if (!productosVentas[e.name]) {
+            productosVentas[e.name] = { cantidad: 0, ingresos: 0 };
+          }
+          productosVentas[e.name].cantidad += i.quantity;
+          productosVentas[e.name].ingresos += (i.quantity * e.price);
         }
       }
     }
-    console.log(`Numero total de pedidos: ${informeVentas.length}\nTotal de ingresos: ${ingresosT}`);
+
+    console.log(`Numero total de pedidos: ${informeVentas.length}`);
+    console.log(`Total de ingresos: ${ingresosT}`);
+    console.log("Desglosamiento de productos:");
+    for (const i in productosVentas) {
+      console.log(`  ${i}: ${productosVentas[i].cantidad} unidades, ingresos: ${productosVentas[i].ingresos}`);
+    }
   }
 }
 function generateInventoryReport() {// !funcion para generar informe de productos
