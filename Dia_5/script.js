@@ -297,7 +297,7 @@ function addOrder(order) {//!funcion para añadir un pedido
   archivo.orders.push(order)
 }
 
-function deleteOrder(orderId) {//! duncion para eliminar un pedido
+function deleteOrder(orderId) {//! funcion para eliminar un pedido
   archivo.orders=archivo.orders.filter(i=> i.orderId!==orderId)
 }
 function updateOrder(orderId, newDetails) {//!funcion para actualizar datos en un pedido
@@ -340,6 +340,58 @@ function viewOrders() {//!funcion para ver los pedidos
   }
 }
 
+function addSupplier(supplier){//!funcion para añadir proveedores
+  archivo.suppliers.push(supplier)
+}
+function viewSuppliers() {//!funcion para ver proveedores
+  for (const i of archivo.suppliers) {
+    console.log(`ID del proveedor: ${i.id}\nNombre: ${i.name}\nNumero de telefono: ${i.contactInfo.phone}\nCorreo electronico: ${i.contactInfo.email}\nDireccion: ${i.contactInfo.address}`);
+    
+  }
+  
+}
+
+function deleteSupplier(id) {//! funcion para eliminar un proveedor
+  archivo.suppliers=archivo.suppliers.filter(i=> i.id!==id)
+}
+
+function updateSupplier(id, newDetails){//!Funcion para actualizar informacion de un proveedor
+  
+  switch (newDetails) {
+    case 1:
+      var cambio=  prompt("¿Cual es el nuevo nombre del proveedor?");
+      archivo.suppliers.find(i=>i.id===id).name=cambio
+      console.log("Nombre actualizado con exito");
+      break;
+  
+    case 2:
+      cambio=  prompt("¿Cual es el nuevo telefono del proveedor?");
+      archivo.suppliers.find(i=>i.id===id).contactInfo.phone=cambio
+      console.log("Telefono actualizado con exito");
+      
+      break;
+  
+    case 3:
+      cambio=  prompt("¿Cual es el nuevo correo electronico del proveedor?")
+      archivo.suppliers.find(i=>i.id===id).contactInfo.email=cambio
+      console.log("Correo electronico actualizado con exito");
+
+
+      break;
+  
+    case 4:
+      cambio=  prompt("¿Cual es la nueva direccion del proveedor?");
+      archivo.suppliers.find(i=>i.id===id).contactInfo.address=cambio
+      console.log("Direccion actualizada con exito");
+      break;
+  
+    default:
+      console.log("Opcion invalida");
+      
+      break;
+  }
+  
+}
 function date() {// !crear la fecha en la que se ejecuta el programa
     let hola =new Date()
     let mes =Number(hola.getMonth())
@@ -366,14 +418,85 @@ while (bol===true) {
     case 1:
       
       break;
-  
     case 2:
+      console.log("1. Agregar Poveedor\n2. Eliminar Proveedor\n3. Modificar Informacion de proveedor \n4. Ver proveedores");
+      var opc3=Number(prompt("Ingresa una opcion"))
+      console.clear()
+      switch (opc3) {
+        case 1:
+          
+
+          let idproveedor=archivo.suppliers.length+101;
+          let nombre= prompt("Ingresa el nombre del proveedor");
+          let telefono= prompt("Ingresa el telefono del proveedor");
+          let correo= prompt("Ingresa el correo del proveedor");
+          let direccion= prompt("Ingresa la direccion del proveedor");
+
+          let supplier={"id":idproveedor,"name":nombre,"contactInfo":{"phone":telefono,"email":correo,"address":direccion}}
+          addSupplier(supplier)
+
+          break;
       
+        case 2:
+          console.log("---------Proveedores----------");
+          
+          for (const i of archivo.suppliers) {
+            let prod=archivo.products.find(c=>c.id===i.productId)
+            console.log(`ID del proveedor: ${i.id}\nNombre: ${i.name}\nNumero de telefono: ${i.contactInfo.phone}\nCorreo electronico: ${i.contactInfo.email}\nDireccion: ${i.contactInfo.address}`);
+          }
+          var id=Number(prompt("Ingresa el id del proveedor que deseas eliminar"))
+          while (!(archivo.suppliers.some(i=>i.id===id))) {
+            id=Number(prompt("ID no encontrado por favor ingresa uno valido"))
+          }
+          deleteSupplier(id)
+          
+          prompt("Preciona Enter Para continuar")
+          
+          break;
+          
+        case 3:
+          console.log("---------Proveedores----------");
+          
+          for (const i of archivo.suppliers) {
+            console.log(`ID del proveedor: ${i.id}\nNombre: ${i.name}\nNumero de telefono: ${i.contactInfo.phone}\nCorreo electronico: ${i.contactInfo.email}\nDireccion: ${i.contactInfo.address}`);
+          }
+          id=Number(prompt("Ingresa el id del pedido que deseas modificar"))
+          while (!(archivo.suppliers.some(i=>i.id===id))) {
+            id=Number(prompt("ID no encontrado por favor ingresa uno valido"))
+          }
+          console.clear()
+          console.log("1. Nombre\n2. Telefono\n3. Correo electronico\n4. Direccion");
+          let newDetails= Number(prompt("¿Que detalle quieres cambiar del pedido?"))
+          if (newDetails>=1 || newDetails<=4) {
+            
+            updateSupplier(id, newDetails)
+
+          } else {
+            console.log("Opcion no valida")
+          }
+          
+          prompt("Preciona Enter Para continuar")
+
+          break;
+          
+        case 4:
+          viewSuppliers()
+          prompt("Preciona Enter Para continuar")
+
+          break;
+          
+        default:
+
+          console.log("Opcion invalida");
+          prompt("Preciona Enter Para continuar")
+          
+          break;
+      }
       break;
   
     case 3:
       console.log("1. Agregar pedido\n2. Eliminar pedido\n3. Modificar pedido\n4. Ver pedidos");
-      let opc3=Number(prompt("Ingresa una opcion"))
+      opc3=Number(prompt("Ingresa una opcion"))
       console.clear()
       switch (opc3) {
         case 1:
@@ -424,7 +547,7 @@ while (bol===true) {
             let prod=archivo.products.find(c=>c.id===i.productId)
             console.log(`ID del Pedido: ${i.orderId}\nID del producto: ${i.productId} \nNombre del producto: ${prod.name}\nCantidad comprada: ${i.quantity}\nFecha del pedido: ${i.orderDate}\nEstado: ${i.status}`);
           }
-          orderId=Number(prompt("Ingresa el id del pedido que deseas eliminar"))
+          orderId=Number(prompt("Ingresa el id del pedido que deseas modificar"))
           while (!(archivo.orders.some(i=>i.orderId===orderId))) {
             orderId=Number(prompt("ID no encontrado por favor ingresa uno valido"))
           }
@@ -450,8 +573,8 @@ while (bol===true) {
           break;
           
         default:
+
           console.log("Opcion invalida");
-          
           prompt("Preciona Enter Para continuar")
           
           break;
