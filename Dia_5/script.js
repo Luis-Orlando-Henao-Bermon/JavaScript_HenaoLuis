@@ -5,7 +5,7 @@ var archivo={
         "name": "Laptop",
         "category": "Electronics",
         "price": 999.99,
-        "quantityInStock": 50,
+        "quantityInStock": 5,
         "supplierId": 101
       },
       {
@@ -45,28 +45,28 @@ var archivo={
         "status": "Delivered"
       },
       {
-        "orderId": 10012,
+        "orderId": 1002,
         "productId": 2,
         "quantity": 20,
         "orderDate": "2024-08-24",
         "status": "Sent"
       },
       {
-        "orderId": 10012,
+        "orderId": 1003,
         "productId": 2,
         "quantity": 5,
         "orderDate": "2024-08-24",
         "status": "Sent"
       },
       {
-        "orderId": 10013,
+        "orderId": 1004,
         "productId": 30,
-        "quantity": 2,
+        "quantity": 20,
         "orderDate": "2024-08-23",
         "status": "Delivered"
       },
       {
-        "orderId": 10013,
+        "orderId": 1005,
         "productId": 30,
         "quantity": 2,
         "orderDate": "2024-08-23",
@@ -74,7 +74,7 @@ var archivo={
       }
     ]
   }
-function generateSalesReport(startDate, endDate) {//funcion de generar informe de ventas
+function generateSalesReport(startDate, endDate) {// !funcion de generar informe de ventas
   let informeVentas = archivo.orders.filter(n => n.orderDate >=startDate && n.orderDate<=endDate);
   
   if (informeVentas.length==0) {
@@ -92,27 +92,27 @@ function generateSalesReport(startDate, endDate) {//funcion de generar informe d
     console.log(`Numero total de pedidos: ${informeVentas.length}\nTotal de ingresos: ${ingresosT}`);
   }
 }
-function generateInventoryReport() {//funcion para generar informe de productos
+function generateInventoryReport() {// !funcion para generar informe de productos
   for (const i of archivo.products) {
-    console.log(`ID del producto: ${i.id}\nNombre del producto: ${i.name}\nNivel de stok: ${i.quantityInStock}\nPrecio: ${i.price}`);
+    console.log(`ID del producto: ${i.id}\nNombre del producto: ${i.name}\nNivel de stock: ${i.quantityInStock}\nPrecio: ${i.price}`);
     console.log("-----Informacion del proveedor-----");
     for (const e of archivo.suppliers) {
       if (i.supplierId===e.id) {
         console.log(`Nombre: ${e.name}\nTelefono: ${e.contactInfo.phone}\nCorreo electronico: ${e.contactInfo.email}\nDireccion: ${e.contactInfo.address}`);
       }
     }
-    console.log(`Valor del stok: ${i.quantityInStock*i.price}`);
+    console.log(`Valor del stock: ${i.quantityInStock*i.price}`);
     
     console.log("-----------------------------------------------");
   }
 }
-function searchProducts(query) {//funcion de buscar productos
+function searchProducts(query) {// !funcion de buscar productos
   switch (query) {
     case 1:
       console.log("------Productos------");
       let productosF=[];
       for (const i of archivo.products) {
-        console.log(`ID del producto: ${i.id} \nNombre: ${i.name}\nPrecio: ${i.price}\nCantidad en stok: ${i.quantityInStock}\n-------------------------------------`);
+        console.log(`ID del producto: ${i.id} \nNombre: ${i.name}\nPrecio: ${i.price}\nCantidad en stock: ${i.quantityInStock}\n-------------------------------------`);
       }
       
       break;
@@ -132,7 +132,7 @@ function searchProducts(query) {//funcion de buscar productos
       console.clear()
       for (const i of archivo.products) {
         if (i.category===cat[BusquedaC-1]) {
-          console.log(`ID del producto: ${i.id} \nNombre: ${i.name}\nPrecio: ${i.price}\nCantidad en stok: ${i.quantityInStock}\n-------------------------------------`);
+          console.log(`ID del producto: ${i.id} \nNombre: ${i.name}\nPrecio: ${i.price}\nCantidad en stock: ${i.quantityInStock}\n-------------------------------------`);
         }
         
       }
@@ -148,7 +148,7 @@ function searchProducts(query) {//funcion de buscar productos
       var contador=1;
       for (const i of archivo.products) {
         if (i.supplierId===BusquedaP) {
-          console.log(`ID del producto: ${i.id} \nNombre: ${i.name}\nPrecio: ${i.price}\nCantidad en stok: ${i.quantityInStock}\n-------------------------------------`);
+          console.log(`ID del producto: ${i.id} \nNombre: ${i.name}\nPrecio: ${i.price}\nCantidad en stock: ${i.quantityInStock}\n-------------------------------------`);
           contador=0;
         }
       }
@@ -164,7 +164,7 @@ function searchProducts(query) {//funcion de buscar productos
   }
   
 }
-function filterOrders(criteria) {//Funcion de filtrar productos
+function filterOrders(criteria) {// !Funcion de filtrar productos
   switch (criteria) {
     case 1:
       console.log("-------Estados-------\n1. Delivered\n2. Sent");
@@ -183,6 +183,8 @@ function filterOrders(criteria) {//Funcion de filtrar productos
                   console.log(`Nombre del producto: ${e.name}`);
                 }
               }
+              console.log(`Cantidad vendida: ${i.quantity}\nEstado: ${i.status}\nFecha del pedido: ${i.orderDate}`);
+              
             }
           }
 
@@ -196,12 +198,13 @@ function filterOrders(criteria) {//Funcion de filtrar productos
           }
           else{
             for (const i of filterE) {
-              console.log(`ID de la orden: ${i.orderId}`)
+              console.log(`ID de la orden: ${i.orderId} `)
               for (const e of archivo.products) {
                 if (e.id===i.productId) {
                   console.log(`Nombre del producto: ${e.name}`);
                 }
               }
+              console.log(`Cantidad vendida: ${i.quantity}\nEstado: ${i.status}\nFecha del pedido: ${i.orderDate}`)
             }
           }
           break;
@@ -229,6 +232,7 @@ function filterOrders(criteria) {//Funcion de filtrar productos
               console.log(`Nombre del producto: ${e.name}`);
             }
           }
+          console.log(`Cantidad vendida: ${i.quantity}\nEstado: ${i.status}\nFecha del pedido: ${i.orderDate}`)
         }
       }
       break;
@@ -250,7 +254,7 @@ function filterOrders(criteria) {//Funcion de filtrar productos
         for (const i of filterP) {
           for (const e of archivo.products) {
             if (i.productId===e.id) {
-              console.log(`ID del producto: ${e.id}\nNombre Del producto: ${e.name}\nCategoria: ${e.category}\nPrecio: ${e.price}\nCantidad Comprada ${i.quantity}\nFecha del pedido ${i.orderDate}\n------------------------`);
+              console.log(`ID del pedido:${i.orderId}\nID del producto: ${e.id}\nNombre Del producto: ${e.name}\nCategoria: ${e.category}\nPrecio: ${e.price}\nCantidad Comprada ${i.quantity}\nFecha del pedido ${i.orderDate}\n------------------------`);
             }
           }
         }
@@ -266,9 +270,77 @@ function filterOrders(criteria) {//Funcion de filtrar productos
   
 }
 
+function checkStockLevels() {// ! funcion para ver productos en bajo stock
+  for (const i of archivo.products) {
+    if (i.quantityInStock<10) {
+      console.log(`ID: ${i.id}\nNombre: ${i.name}\nCantidad en stock: ${i.quantityInStock}\n----------------------------------------------`);
+    }
+  }
+}
 
+function restockProduct(id, quantity) {// !funcion para añadir cantidad de un producto
+  
+  let comprovante=0;
+  for (const i of archivo.products) {
+    if (id==i.id) {
+      comprovante=1;
+      i.quantityInStock+=quantity
+    }
+  }
+  if (comprovante===0) {
+    console.log("No hay productos con ese id");
+    
+  }
+}
 
-function date() {//crear la fecha en la que se ejecuta el programa
+function addOrder(order) {//!funcion para añadir un pedido
+  archivo.orders.push(order)
+}
+
+function deleteOrder(orderId) {//! duncion para eliminar un pedido
+  archivo.orders=archivo.orders.filter(i=> i.orderId!==orderId)
+}
+function updateOrder(orderId, newDetails) {//!funcion para actualizar datos en un pedido
+  switch (newDetails) {
+    case 1:
+      console.log(archivo.orders.find(i=>i.orderId===orderId).orderId);
+      
+      if (archivo.orders.find(i=>i.orderId===orderId).status=="Delivered") {
+        console.log("El estado de este producto es delivered por lo tanto no se puede cambiar");
+        
+      }
+      else{
+        archivo.orders.find(i=>i.orderId===orderId).status="Delivered"
+        console.log("El estado de este producto a cambiado a Delivered");
+      }
+      break;
+      
+    case 2:
+      var cant=Number(prompt("¿Cual es la nueva cantidad de productos en el pedido?"));
+      let cantBefore=archivo.orders.find(i=>i.orderId===orderId).quantity
+      let idProducto=archivo.orders.find(i=>i.orderId===orderId).productId
+      while (cant-cantBefore>archivo.products.find(i=>i.id===idProducto).quantityInStock) {
+        cant=Number(prompt("Esa cantidad supera la cantidad en stock por favor ingresa una menor"));
+      } 
+      archivo.products.find(i=>i.id===idProducto).quantityInStock-=(cant-cantBefore)
+      archivo.orders.find(i=>i.orderId===orderId).quantity=cant
+      console.log("Cantidad actualizada con exito");
+      break;
+  
+    default:
+      break;
+  }
+}
+
+function viewOrders() {//!funcion para ver los pedidos
+
+  for (const i of archivo.orders) {
+    console.log(`ID del pedido: ${i.orderId}\nID del producto: ${i.productId}\nNombre del producto: ${archivo.products.find(x=>x.id===i.productId).name}\nCantidad:${i.quantity}\nFecha del pedido: ${i.orderDate}\nEstado del pedido: ${i.status}`);
+    
+  }
+}
+
+function date() {// !crear la fecha en la que se ejecuta el programa
     let hola =new Date()
     let mes =Number(hola.getMonth())
     mes+=1
@@ -300,11 +372,121 @@ while (bol===true) {
       break;
   
     case 3:
+      console.log("1. Agregar pedido\n2. Eliminar pedido\n3. Modificar pedido\n4. Ver pedidos");
+      let opc3=Number(prompt("Ingresa una opcion"))
+      console.clear()
+      switch (opc3) {
+        case 1:
+          for (const i of archivo.products) {
+    
+            console.log(`ID: ${i.id}\nNombre: ${i.name}\nCantidad en stock: ${i.quantityInStock}\nPrecio: ${i.price}\nCategoria: ${i.category}\n----------------------------------------------`);
+          }
+
+          let idp=Number(prompt("Ingresa el id del producto"))
+          while (!(archivo.products.some(i=> i.id===idp))) {
+            idp=Number(prompt("Ese id no Existe por favor ingresa uno valido"))
+          }
+          let product=archivo.products.find(i=> i.id ===idp)
+
+          let cantidad=Number(prompt("Ingresa la cantidad del producto"))
+          while (cantidad>product.quantityInStock) {
+            cantidad=Number(prompt("La cantidad ingresada es mayor a la cantidad disponible en stock. Por favor ingresa una menor"))
+          }
+          archivo.products.find(i=> i.id === idp).quantityInStock-=cantidad
+          let fecha=date()
+          let oId=archivo.length+1001
+          let order={"orderId":oId,"productId":idp,"quantity":cantidad,"orderDate":fecha,"status":"Sent"}
+          addOrder(order)
+
+          break;
       
+        case 2:
+          console.log("---------Pedidos----------");
+          
+          for (const i of archivo.orders) {
+            let prod=archivo.products.find(c=>c.id===i.productId)
+            console.log(`ID del Pedido: ${i.orderId}\nID del producto: ${i.productId} \nNombre del producto: ${prod.name}\nCantidad comprada: ${i.quantity}\nFecha del pedido: ${i.orderDate}`);
+          }
+          var orderId=Number(prompt("Ingresa el id del pedido que deseas eliminar"))
+          while (!(archivo.orders.some(i=>i.orderId===orderId))) {
+            orderId=Number(prompt("ID no encontrado por favor ingresa uno valido"))
+          }
+          deleteOrder(orderId)
+          
+          prompt("Preciona Enter Para continuar")
+          
+          break;
+          
+        case 3:
+          console.log("---------Pedidos----------");
+          
+          for (const i of archivo.orders) {
+            let prod=archivo.products.find(c=>c.id===i.productId)
+            console.log(`ID del Pedido: ${i.orderId}\nID del producto: ${i.productId} \nNombre del producto: ${prod.name}\nCantidad comprada: ${i.quantity}\nFecha del pedido: ${i.orderDate}\nEstado: ${i.status}`);
+          }
+          orderId=Number(prompt("Ingresa el id del pedido que deseas eliminar"))
+          while (!(archivo.orders.some(i=>i.orderId===orderId))) {
+            orderId=Number(prompt("ID no encontrado por favor ingresa uno valido"))
+          }
+          console.clear()
+          console.log("1. Estado\n2. cantidad");
+          let newDetails= Number(prompt("¿Que detalle quieres cambiar del pedido?"))
+          if (newDetails===1 || newDetails===2) {
+            
+            updateOrder(orderId, newDetails)
+
+          } else {
+            console.log("Opcion no valida")
+          }
+          
+          prompt("Preciona Enter Para continuar")
+
+          break;
+          
+        case 4:
+          viewOrders()
+          prompt("Preciona Enter Para continuar")
+
+          break;
+          
+        default:
+          console.log("Opcion invalida");
+          
+          prompt("Preciona Enter Para continuar")
+          
+          break;
+      }
       break;
-  
+
     case 4:
+      console.log("1. Ver productos con stock bajo\n2. Aumentar el nivel de existencias de un producto");
+      let gestionExistencias = Number(prompt("Ingresa tu opcion"))
+      console.clear()
+      switch (gestionExistencias) {
+        case 1:
+          checkStockLevels()
+          prompt("Preciona Enter Para continuar")
+
+          break;
       
+        case 2:
+          for (const i of archivo.products) {
+    
+            console.log(`ID: ${i.id}\nNombre: ${i.name}\nCantidad en stock: ${i.quantityInStock}\n----------------------------------------------`);
+          }
+          let  id = Number(prompt("Ingresa el ID del producto"));
+          let  quantity = Number(prompt("Ingresa la cantidad a aumentar"));
+          restockProduct(id, quantity)
+          prompt("Preciona Enter Para continuar")
+          
+          break;
+      
+        default:
+          console.log("Opcion invalida");
+          prompt("Preciona Enter Para continuar")
+          
+          break;
+      }
       break;
   
     case 5:
@@ -327,6 +509,7 @@ while (bol===true) {
       
         default:
           console.log("Opcion invalida");
+          prompt("Preciona Enter Para continuar")
           
           break;
       }
@@ -357,6 +540,7 @@ while (bol===true) {
       
         default:
           console.log("Opcion invalida");
+          prompt("Preciona Enter Para continuar")
           
           break;
       }
@@ -371,6 +555,7 @@ while (bol===true) {
   
     default:
       console.log("Opcion invalida");
+      prompt("Preciona Enter Para continuar")
       
       break;
   }

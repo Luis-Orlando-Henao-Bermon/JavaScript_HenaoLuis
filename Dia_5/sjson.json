@@ -5,7 +5,7 @@
       "name": "Laptop",
       "category": "Electronics",
       "price": 999.99,
-      "quantityInStock": 50,
+      "quantityInStock": 5,
       "supplierId": 101
     },
     {
@@ -45,21 +45,21 @@
       "status": "Delivered"
     },
     {
-      "orderId": 10012,
+      "orderId": 1002,
       "productId": 2,
       "quantity": 20,
       "orderDate": "2024-8-24",
       "status": "Sent"
     },
     {
-      "orderId": 10012,
+      "orderId": 1003,
       "productId": 2,
       "quantity": 5,
       "orderDate": "2024-8-24",
       "status": "Sent"
     },
     {
-      "orderId": 10013,
+      "orderId": 1004,
       "productId": 30,
       "quantity": 2,
       "orderDate": "2024-8-23",
