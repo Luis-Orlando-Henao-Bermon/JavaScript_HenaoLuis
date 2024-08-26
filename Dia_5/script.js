@@ -411,12 +411,12 @@ function addProduct(product) {//!funcion para agregar productos
   archivo.products.push(product)
 }
 
-function deleteProduct(id) {
+function deleteProduct(id) {// ! funcion para eliminar productos
   archivo.products=archivo.products.filter(i =>i.id!==id)
 
 }
 
-function viewProducts(){
+function viewProducts(){//! funcion para ver productos
   for (const i of archivo.products) {
 
     console.log(`ID del producto: ${i.id}\nNombre: ${i.name}\nCategoria: ${i.category}\nPrecio: ${i.price}\nCantidad en stock: ${i.quantityInStock}\nID del proveedor: ${i.supplierId}\nNombre del proveedor: ${archivo.suppliers.find(x=>x.id===i.supplierId).name}`);
