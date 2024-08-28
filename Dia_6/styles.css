@@ -1,0 +1,55 @@
+body{
+    margin: 0%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+header{
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-evenly;
+    height: 6rem;
+    background-color: #efd0ff;
+    align-items: center;
+}
+header button{
+    width: 17rem;
+    font-size: 1.5rem;
+}
+.space{
+    height: 6rem;
+}
+#Prod,#Prove,#Ped{
+    display: none;
+    flex-direction: column;
+    text-align: center;
+}
+table{
+    margin: auto;
+    margin-top: 3rem;
+}
+table,th,td{
+    padding: 0.5rem 0;
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+th{
+    padding:1rem  5rem;
+    background-color: #efd0ff;
+    color: #4b006f;
+}
+button{
+    height: 1.5rem;
+    width: 10rem;
+    background-color: #efd0ff;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 1rem;
+    padding:0 0.5rem ;
+    text-align: center;
+    justify-content: center;
+    color: #4b006f;
+}
+#idProveedorEliminar{
+    width: 11rem;
+}
