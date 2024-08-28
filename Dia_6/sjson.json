@@ -46,7 +46,7 @@
     },
     {
       "orderId": 1002,
-      "productId": 2,
+      "productId": 3,
       "quantity": 20,
       "orderDate": "2024-08-24",
       "status": "Sent"

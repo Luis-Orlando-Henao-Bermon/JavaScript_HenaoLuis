@@ -1,14 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Menú Principal</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <input type="text" id="text">
-    <button id="bot" onclick="xd()">mostrar</button>
+    <header>
+        <button id="boton1">Gestionar productos</button>
+        <button id="boton2">Gestionar proveedores</button>
+        <button id="boton3">Gestionar pedidos</button>
+    </header>
+    <div class="space"></div>
+    <div id="Prod">
+        <div>
+
+            <h2>Agregar productos</h2>
+            <input type="text" id="nombreProducto" placeholder="Nombre del producto">
+            <input type="text" id="categoriaProducto" placeholder="Categoria del producto">
+            <input type="number" id="precioProducto" placeholder="Precio">
+            <input type="number" id="cantidadStockProducto" placeholder="Cantidad en stock">
+            <input type="number" id="idProveedorProducto"  placeholder="ID del proveedor">
+
+            <button id="botonAgregarProducto">Agregar</button>
+            <br>
+            <h2>Eliminar producto</h2>
+            
+            <input type="number" id="idProductoEliminar" placeholder="Ingresa el id del producto">
+            <button id="botoneEliminarProducto">Eliminar</button>
+            
+            <h2>Cambiar precio de producto</h2>
+            
+            <input type="number" id="idProductoCambiar" placeholder="Ingresa el id del producto">
+            <input type="number" id="precioCambiar" placeholder="Ingresa el nuevo precio">
+            <button id="botoneCambiarProducto">Cambiar</button>
+        </div>
+
+        <table id="Productos">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad en stock</th>
+                    <th scope="col">Id de proveedor</th>
+                </tr>
     
+            </thead>
+            <tbody id="thbd">
+            </tbody>
+    
+        </table>
+
+    </div>
+    <div id="Prove">
+        <div>
+
+            <h2>Agregar proveedor</h2>
+            <input type="text" id="nombreProveedor" placeholder="Nombre del proveedor">
+            <input type="text" id="telefonoProveedor" placeholder="Telefono">
+            <input type="email" id="emailProveedor" placeholder="Email">
+            <input type="text" id="direccionProveedor"  placeholder="Direccion">
+            <button id="botonAgregarProveedor">Agregar</button>
+            <br>
+            <h2>Eliminar proveedor</h2>
+            
+            <input type="number" id="idProveedorEliminar" placeholder="Ingresa el id del proveedor">
+            <button id="botoneEliminarProveedor">Eliminar</button>
+            
+            <h2>Cambiar datos del proveedor</h2>
+            
+            <input type="number" id="idProductoCambiar" placeholder="Ingresa el id del producto">
+            <input type="number" id="precioCambiar" placeholder="Ingresa el nuevo precio">
+            <button id="botoneCambiarProducto">Cambiar</button>
+        </div>
+        <table id="Proveedor">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Direccion</th>
+                </tr>
+    
+            </thead>
+            <tbody id="thbd1">
+            </tbody>
+    
+        </table>
+
+    </div>
+    <div id="Ped">
+        <div>
+
+            <h2>Agregar pedido</h2>
+            <input type="number" id="idProductoPedido" placeholder="ID del producto">
+            <input type="text" id="cantidadPedido" placeholder="Cantidad">
+            <button id="botonAgregarPedido">Agregar</button>
+            <br>
+            <h2>Eliminar pedido</h2>
+            
+            <input type="number" id="idPedidoEliminar" placeholder="Ingresa el ID del pedido">
+            <button id="botonEliminarPedido">Eliminar</button>
+            
+            <h2>Cambiar datos del pedido</h2>
+            
+            <input type="number" id="idProductoCambiar" placeholder="Ingresa el id del producto">
+            <input type="number" id="precioCambiar" placeholder="Ingresa el nuevo precio">
+            <button id="botoneCambiarProducto">Cambiar</button>
+        </div>
+        <table id="Pedidos">
+            <thead>
+                <tr>
+                    <th scope="col">ID del pedido</th>
+                    <th scope="col">ID del producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Fecha del pedido</th>
+                    <th scope="col">Estado</th>
+                </tr>
+    
+            </thead>
+            <tbody id="thbd2">
+            </tbody>
+    
+        </table>
+
+    </div>
+
 </body>
 <script src="./script.js"></script>
 </html>
