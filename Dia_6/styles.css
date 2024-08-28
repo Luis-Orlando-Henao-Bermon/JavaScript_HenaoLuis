@@ -23,6 +23,9 @@ header button{
     flex-direction: column;
     text-align: center;
 }
+/* #Prove{
+    display: flex   ;
+} */
 table{
     margin: auto;
     margin-top: 3rem;
@@ -52,4 +55,20 @@ button{
 }
 #idProveedorEliminar{
     width: 11rem;
+}
+#idProductoCambiar{
+    width: 11rem;
+
+}
+#cambio,#cambio1,#cambio2,#cambio3{
+    display: none;
+    margin: auto;
+    justify-content: center;
+    margin-top: 1rem;
+}
+#cambiopedido1,#cambiopedido{
+    display: none;
+    margin: auto;
+    justify-content: center;
+    margin-top: 1rem;
 }

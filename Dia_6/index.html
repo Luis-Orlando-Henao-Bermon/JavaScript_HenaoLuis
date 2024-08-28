@@ -67,14 +67,36 @@
             <br>
             <h2>Eliminar proveedor</h2>
             
-            <input type="number" id="idProveedorEliminar" placeholder="Ingresa el id del proveedor">
+            <input type="number" id="idProveedorEliminar" placeholder="Ingresa el ID del proveedor">
             <button id="botoneEliminarProveedor">Eliminar</button>
             
             <h2>Cambiar datos del proveedor</h2>
+            <button id="cambioProvee1">Cambiar nombre</button>
+            <button id="cambioProvee2">Cambiar telefono</button>
+            <button id="cambioProvee3">Cambiar email</button>
+            <button id="cambioProvee4">Cambiar direccion</button>
             
-            <input type="number" id="idProductoCambiar" placeholder="Ingresa el id del producto">
-            <input type="number" id="precioCambiar" placeholder="Ingresa el nuevo precio">
-            <button id="botoneCambiarProducto">Cambiar</button>
+            <div id="cambio">
+                
+                <input type="number" id="idProveedorCambiar" placeholder="Ingresa el ID del proveedor">
+                <input type="text" id="proveedorCambio" placeholder="Ingresa el nuevo nombre">
+                <button id="botoneCambiarProveedor1">Cambiar</button>
+            </div>
+            <div id="cambio1">
+                <input type="number" id="idProveedorCambiarphone" placeholder="Ingresa el ID del proveedor">
+                <input type="text" id="proveedorCambiophone" placeholder="Ingresa el nuevo telefono">
+                <button id="botoneCambiarProveedor2">Cambiar</button>
+            </div>
+            <div id="cambio2">
+                <input type="number" id="idProveedorCambiarEmail" placeholder="Ingresa el ID del proveedor">
+                <input type="text" id="proveedorCambioEmail" placeholder="Ingresa el nuevo correo">
+                <button id="botoneCambiarProveedor3">Cambiar</button>
+            </div>
+            <div id="cambio3">
+                <input type="number" id="idProveedorCambiarAdress" placeholder="Ingresa el ID del proveedor">
+                <input type="text" id="proveedorCambioAdress" placeholder="Ingresa la nueva direccion">
+                <button id="botoneCambiarProveedor4">Cambiar</button>
+            </div>
         </div>
         <table id="Proveedor">
             <thead>
@@ -106,11 +128,21 @@
             <input type="number" id="idPedidoEliminar" placeholder="Ingresa el ID del pedido">
             <button id="botonEliminarPedido">Eliminar</button>
             
-            <h2>Cambiar datos del pedido</h2>
+            <h2>Cambiar datos del Pedido</h2>
+            <button id="cambioPedido1">Cambiar Cantidad</button>
+            <button id="cambioPedido2">Cambiar Estado</button>
             
-            <input type="number" id="idProductoCambiar" placeholder="Ingresa el id del producto">
-            <input type="number" id="precioCambiar" placeholder="Ingresa el nuevo precio">
-            <button id="botoneCambiarProducto">Cambiar</button>
+            <div id="cambiopedido">
+                
+                <input type="number" id="idPedidoCambiar" placeholder="Ingresa el ID del pedido">
+                <input type="text" id="pedidoCambio" placeholder="Ingresa la nueva cantidad">
+                <button id="botoneCambiarPedido1">Cambiar</button>
+            </div>
+            <div id="cambiopedido1">
+                <input type="number" id="idPedidoCambiarEstado" placeholder="Ingresa el ID del pedido">
+                <input type="text" id="pedidoCambioEstado" placeholder="Ingresa el nuevo estado">
+                <button id="botoneCambiarPedido2">Cambiar</button>
+            </div>
         </div>
         <table id="Pedidos">
             <thead>

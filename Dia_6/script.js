@@ -14,9 +14,22 @@ fetch("./sjson.json")
   //!---------------------------------------------------Botones de gestionar proveedores------------------------------------------------------
   document.getElementById("botonAgregarProveedor").addEventListener("click",addSupplier)
   document.getElementById("botoneEliminarProveedor").addEventListener("click",deleteSupplier)
+  document.getElementById("cambioProvee1").addEventListener("click",mostrarCambioname)
+  document.getElementById("cambioProvee2").addEventListener("click",mostrarCambioTelefono)
+  document.getElementById("cambioProvee3").addEventListener("click",mostrarCambioEmail)
+  document.getElementById("cambioProvee4").addEventListener("click",mostrarCambioAdress)
+  document.getElementById("botoneCambiarProveedor1").addEventListener("click",updateSuppliername)
+  document.getElementById("botoneCambiarProveedor2").addEventListener("click",updateSupplierTelefono)
+  document.getElementById("botoneCambiarProveedor3").addEventListener("click",updateSupplierEmail)
+  document.getElementById("botoneCambiarProveedor4").addEventListener("click",updateSupplierAdress)
+  
   //!---------------------------------------------------Botones de gestionar pedidos------------------------------------------------------
   document.getElementById("botonAgregarPedido").addEventListener("click",addOrder)
   document.getElementById("botonEliminarPedido").addEventListener("click",deleteOrder)
+  document.getElementById("cambioPedido1").addEventListener("click",mostrarCambioPedidoCant)
+  document.getElementById("botoneCambiarPedido1").addEventListener("click",updateOrdersCant)
+  document.getElementById("cambioPedido2").addEventListener("click",mostrarCambioPedidoStatus)
+  document.getElementById("botoneCambiarPedido2").addEventListener("click",updateOrdersStatus)
   
   function mostrarProducto() {
     let prod=document.getElementById("Prod");
@@ -54,7 +67,7 @@ fetch("./sjson.json")
   }
   
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////!
-  function addOrder(order) {//!funcion para añadir un pedido
+  function addOrder() {//!funcion para añadir un pedido
     let idPedido=archivo.orders.length+1001
     let fecha=date()
     let idProductoPedido=document.getElementById("idProductoPedido").value
@@ -75,7 +88,7 @@ fetch("./sjson.json")
     }
   }
   
-  function deleteOrder(orderId) {//! funcion para eliminar un pedido
+  function deleteOrder() {//! funcion para eliminar un pedido
     let idPedidoEliminar=parseInt(document.getElementById("idPedidoEliminar").value)
     if (archivo.orders.some(i=> i.orderId===idPedidoEliminar)) {
       archivo.orders=archivo.orders.filter(i=> i.orderId!==idPedidoEliminar)
@@ -86,36 +99,38 @@ fetch("./sjson.json")
       alert("ID no encontrado")
     }
   }
-  function updateOrder(orderId, newDetails) {//!funcion para actualizar datos en un pedido
-    switch (newDetails) {
-      case 1:
-        console.log(archivo.orders.find(i=>i.orderId===orderId).orderId);
-        
-        if (archivo.orders.find(i=>i.orderId===orderId).status=="Delivered") {
-          console.log("El estado de este producto es delivered por lo tanto no se puede cambiar");
-          
-        }
-        else{
-          archivo.orders.find(i=>i.orderId===orderId).status="Delivered"
-          console.log("El estado de este producto a cambiado a Delivered");
-        }
-        break;
-        
-        case 2:
-          var cant=Number(prompt("¿Cual es la nueva cantidad de productos en el pedido?"));
-          let cantBefore=archivo.orders.find(i=>i.orderId===orderId).quantity
-          let idProducto=archivo.orders.find(i=>i.orderId===orderId).productId
-          while (cant-cantBefore>archivo.products.find(i=>i.id===idProducto).quantityInStock) {
-            cant=Number(prompt("Esa cantidad supera la cantidad en stock por favor ingresa una menor"));
-          } 
-          archivo.products.find(i=>i.id===idProducto).quantityInStock-=(cant-cantBefore)
-          archivo.orders.find(i=>i.orderId===orderId).quantity=cant
-          console.log("Cantidad actualizada con exito");
-          break;
-          
-          default:
-            break;
-          }
+  function mostrarCambioPedidoStatus(){//!Funcion para actualizar informacion estado de un pedido
+    document.getElementById("idPedidoCambiarEstado").value=""
+    document.getElementById("pedidoCambioEstado").value=""
+    document.getElementById("cambiopedido").style.display="none"  
+    document.getElementById("cambiopedido1").style.display="flex"
+  
+  }
+  function updateOrdersStatus(){//!Funcion para actualizar informacion estado de un pedido
+    var idCNPedid=parseInt(document.getElementById("idPedidoCambiarEstado").value)
+    var CNPedid=document.getElementById("pedidoCambioEstado").value
+
+    archivo.orders.find(i=>i.orderId===idCNPedid).status=CNPedid
+    document.getElementById("thbd2").innerHTML=""
+    viewOrders()
+    document.getElementById("cambiopedido1").style.display="none"
+  }
+
+  function mostrarCambioPedidoCant(){//!Funcion para actualizar informacion cantidad de un pedido
+    document.getElementById("idPedidoCambiar").value=""
+    document.getElementById("pedidoCambio").value=""
+    document.getElementById("cambiopedido").style.display="flex"  
+    document.getElementById("cambiopedido1").style.display="none"
+  
+  }
+  function updateOrdersCant(){//!Funcion para actualizar informacion cantidad de un pedido
+    var idCNPedid=parseInt(document.getElementById("idPedidoCambiar").value)
+    var CNPedid=document.getElementById("pedidoCambio").value
+
+    archivo.orders.find(i=>i.orderId===idCNPedid).quantity=CNPedid
+    document.getElementById("thbd2").innerHTML=""
+    viewOrders()
+    document.getElementById("cambiopedido").style.display="none"
   }
         
   function viewOrders() {//!funcion para ver los pedidos
@@ -187,43 +202,81 @@ fetch("./sjson.json")
     }
   }
   
-  function updateSupplier(id, newDetails){//!Funcion para actualizar informacion de un proveedor
-    
-    switch (newDetails) {
-      case 1:
-        var cambio=  prompt("¿Cual es el nuevo nombre del proveedor?");
-        archivo.suppliers.find(i=>i.id===id).name=cambio
-        console.log("Nombre actualizado con exito");
-        break;
-        
-        case 2:
-          cambio=  prompt("¿Cual es el nuevo telefono del proveedor?");
-          archivo.suppliers.find(i=>i.id===id).contactInfo.phone=cambio
-          console.log("Telefono actualizado con exito");
-          
-          break;
-          
-          case 3:
-            cambio=  prompt("¿Cual es el nuevo correo electronico del proveedor?")
-            archivo.suppliers.find(i=>i.id===id).contactInfo.email=cambio
-            console.log("Correo electronico actualizado con exito");
-            
-            
-            break;
-            
-            case 4:
-              cambio=  prompt("¿Cual es la nueva direccion del proveedor?");
-              archivo.suppliers.find(i=>i.id===id).contactInfo.address=cambio
-              console.log("Direccion actualizada con exito");
-              break;
-              
-              default:
-        console.log("Opcion invalida");
-        
-        break;
-      }
-      
-    }
+  function mostrarCambioAdress(){//!Funcion para actualizar informacion email de un proveedor
+    document.getElementById("idProveedorCambiarAdress").value=""
+    document.getElementById("proveedorCambioAdress").value=""
+    document.getElementById("cambio").style.display="none"  
+    document.getElementById("cambio1").style.display="none"  
+    document.getElementById("cambio2").style.display="none"  
+    document.getElementById("cambio3").style.display="flex"  
+  
+  }
+  function mostrarCambioEmail(){//!Funcion para actualizar informacion email de un proveedor
+    document.getElementById("idProveedorCambiarEmail").value=""
+    document.getElementById("proveedorCambioEmail").value=""
+    document.getElementById("cambio").style.display="none"  
+    document.getElementById("cambio1").style.display="none"  
+    document.getElementById("cambio2").style.display="flex"  
+    document.getElementById("cambio3").style.display="none"  
+  
+  }
+  function mostrarCambioTelefono(){//!Funcion para actualizar informacion telefono de un proveedor
+    document.getElementById("idProveedorCambiarphone").value=""
+    document.getElementById("proveedorCambiophone").value=""
+    document.getElementById("cambio").style.display="none"  
+    document.getElementById("cambio1").style.display="flex"  
+    document.getElementById("cambio2").style.display="none"  
+    document.getElementById("cambio3").style.display="none"  
+  
+  }
+  function mostrarCambioname(){//!Funcion para actualizar informacion nombre de un proveedor
+    document.getElementById("idProveedorCambiar").value=""
+    document.getElementById("proveedorCambio").value=""
+    document.getElementById("cambio").style.display="flex"  
+    document.getElementById("cambio1").style.display="none"  
+    document.getElementById("cambio2").style.display="none"  
+    document.getElementById("cambio3").style.display="none" 
+  
+  }
+  function updateSupplierAdress(){//!Funcion para actualizar informacion nombre de un proveedor
+    var idCNProvee=parseInt(document.getElementById("idProveedorCambiarAdress").value)
+    var CNProvee=document.getElementById("proveedorCambioAdress").value
+
+    archivo.suppliers.find(i=>i.id===idCNProvee).contactInfo.address=CNProvee
+    document.getElementById("thbd1").innerHTML=""
+    viewSuppliers()
+    document.getElementById("cambio3").style.display="none"
+  }
+  function updateSupplierEmail(){//!Funcion para actualizar informacion nombre de un proveedor
+    var idCNProvee=parseInt(document.getElementById("idProveedorCambiarEmail").value)
+    var CNProvee=document.getElementById("proveedorCambioEmail").value
+
+    archivo.suppliers.find(i=>i.id===idCNProvee).contactInfo.email=CNProvee
+    document.getElementById("thbd1").innerHTML=""
+    viewSuppliers()
+    document.getElementById("cambio2").style.display="none"
+  }
+  function updateSupplierTelefono(){//!Funcion para actualizar informacion nombre de un proveedor
+    var idCNProvee=parseInt(document.getElementById("idProveedorCambiarphone").value)
+    var CNProvee=document.getElementById("proveedorCambiophone").value
+
+    archivo.suppliers.find(i=>i.id===idCNProvee).contactInfo.phone=CNProvee
+    document.getElementById("thbd1").innerHTML=""
+    viewSuppliers()
+    document.getElementById("cambio1").style.display="none"
+  }
+  function updateSuppliername(){//!Funcion para actualizar informacion nombre de un proveedor
+    var idCNProvee=parseInt(document.getElementById("idProveedorCambiar").value)
+    var CNProvee=document.getElementById("proveedorCambio").value
+
+    archivo.suppliers.find(i=>i.id===idCNProvee).name=CNProvee
+    document.getElementById("thbd1").innerHTML=""
+    viewSuppliers()
+    document.getElementById("cambio").style.display="none"
+  }
+
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////!
   function addProduct() {// !funcion para agregar productos
     var idProducto=archivo.products.length+1
