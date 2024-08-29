@@ -68,7 +68,7 @@ fetch("./sjson.json")
   
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////!
   function addOrder() {//!funcion para añadir un pedido
-    let idPedido=archivo.orders.length+1001
+    let idPedido=archivo.orders[archivo.orders.length-1].orderId+1
     let fecha=date()
     let idProductoPedido=document.getElementById("idProductoPedido").value
     let cantidadPedido=document.getElementById("cantidadPedido").value
@@ -152,7 +152,7 @@ fetch("./sjson.json")
   }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////!
   function addSupplier(){//!funcion para añadir proveedores
-    let idProveedor=archivo.suppliers.length+101
+    let idProveedor=archivo.suppliers[archivo.suppliers.length-1].id+1
     let nombreProveedor=document.getElementById("nombreProveedor").value
     let telefonoProveedor=document.getElementById("telefonoProveedor").value
     let emailProveedor=document.getElementById("emailProveedor").value
@@ -239,47 +239,83 @@ fetch("./sjson.json")
   
   }
   function updateSupplierAdress(){//!Funcion para actualizar informacion nombre de un proveedor
+    
     var idCNProvee=parseInt(document.getElementById("idProveedorCambiarAdress").value)
     var CNProvee=document.getElementById("proveedorCambioAdress").value
-
-    archivo.suppliers.find(i=>i.id===idCNProvee).contactInfo.address=CNProvee
-    document.getElementById("thbd1").innerHTML=""
-    viewSuppliers()
-    document.getElementById("cambio3").style.display="none"
+    if (archivo.suppliers.find(i=>i.id===idCNProvee)) {
+      if(CNProvee===""){
+        alert("Por favor rellena todos los cambios")
+      } else{
+        archivo.suppliers.find(i=>i.id===idCNProvee).contactInfo.address=CNProvee
+        document.getElementById("thbd1").innerHTML=""
+        viewSuppliers()
+        document.getElementById("cambio3").style.display="none"
+      }
+      
+    } else{
+      alert("ID no encontrado")
+    }
   }
   function updateSupplierEmail(){//!Funcion para actualizar informacion nombre de un proveedor
+    
     var idCNProvee=parseInt(document.getElementById("idProveedorCambiarEmail").value)
     var CNProvee=document.getElementById("proveedorCambioEmail").value
-
-    archivo.suppliers.find(i=>i.id===idCNProvee).contactInfo.email=CNProvee
-    document.getElementById("thbd1").innerHTML=""
-    viewSuppliers()
-    document.getElementById("cambio2").style.display="none"
+    if (archivo.suppliers.find(i=>i.id===idCNProvee)) {
+      if(CNProvee===""){
+        alert("Por favor rellena todos los cambios")
+      } else{
+        archivo.suppliers.find(i=>i.id===idCNProvee).contactInfo.email=CNProvee
+        document.getElementById("thbd1").innerHTML=""
+        viewSuppliers()
+        document.getElementById("cambio2").style.display="none"
+      }
+      
+    } else{
+      alert("ID no encontrado")
+    }
   }
   function updateSupplierTelefono(){//!Funcion para actualizar informacion nombre de un proveedor
+    
     var idCNProvee=parseInt(document.getElementById("idProveedorCambiarphone").value)
     var CNProvee=document.getElementById("proveedorCambiophone").value
-
-    archivo.suppliers.find(i=>i.id===idCNProvee).contactInfo.phone=CNProvee
-    document.getElementById("thbd1").innerHTML=""
-    viewSuppliers()
-    document.getElementById("cambio1").style.display="none"
+    if (archivo.suppliers.find(i=>i.id===idCNProvee)) {
+      if(CNProvee===""){
+        alert("Por favor rellena todos los cambios")
+      } else{
+        archivo.suppliers.find(i=>i.id===idCNProvee).contactInfo.phone=CNProvee
+        document.getElementById("thbd1").innerHTML=""
+        viewSuppliers()
+        document.getElementById("cambio1").style.display="none"
+      }
+      
+    } else{
+      alert("ID no encontrado")
+    }
   }
   function updateSuppliername(){//!Funcion para actualizar informacion nombre de un proveedor
+    
     var idCNProvee=parseInt(document.getElementById("idProveedorCambiar").value)
     var CNProvee=document.getElementById("proveedorCambio").value
-
-    archivo.suppliers.find(i=>i.id===idCNProvee).name=CNProvee
-    document.getElementById("thbd1").innerHTML=""
-    viewSuppliers()
-    document.getElementById("cambio").style.display="none"
+    if (archivo.suppliers.find(i=>i.id===idCNProvee)) {
+      if(CNProvee===""){
+        alert("Por favor rellena todos los cambios")
+      } else{
+        archivo.suppliers.find(i=>i.id===idCNProvee).name=CNProvee
+        document.getElementById("thbd1").innerHTML=""
+        viewSuppliers()
+        document.getElementById("cambio").style.display="none"
+      }
+      
+    } else{
+      alert("ID no encontrado")
+    }
   }
 
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////!
   function addProduct() {// !funcion para agregar productos
-    var idProducto=archivo.products.length+1
+    var idProducto=archivo.products[archivo.products.length-1].id+1
     var nombreProducto=document.getElementById("nombreProducto").value
     var categoriaProducto=document.getElementById("categoriaProducto").value
     var precioProducto=parseInt(document.getElementById("precioProducto").value)
