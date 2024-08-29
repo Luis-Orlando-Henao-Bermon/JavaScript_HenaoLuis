@@ -1,0 +1,31 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#idSuper{
+    width: 16rem;
+}
+#inp{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 5rem;
+}
+#titulo{
+    text-align: center;
+}
+img{
+    width: 9rem;
+}
+table{
+    text-align: center;
+} 
+h1{
+    background-color: #0c6cfc;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
