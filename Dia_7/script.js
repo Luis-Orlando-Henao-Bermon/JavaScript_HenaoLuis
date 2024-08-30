@@ -5,9 +5,8 @@ document.getElementById("boton1").addEventListener("click",mostrarHeroe)
 
 function mostrarHeroe() {
     let id= parseInt(document.getElementById("idSuper").value)
-    if (id<1||id>731) {
-        alert("ID fuera de rango (Rango maximo 731)")
-    }else{
+    if (id>=1||id<=732) {
+        document.getElementById("contenTable").style.display="block"
         
         let url="https://superheroapi.com/api.php/66f7463330e3cce0b4d0e0c6580f5fb9/"+String(id)
         fetch(url)
@@ -82,6 +81,8 @@ function mostrarHeroe() {
             tablaConeccions.appendChild(fila)
 
         })
+    }else{
+        alert("ID fuera de rango (Rango maximo 732)")
     }
     document.getElementById("idSuper").value=""
 }

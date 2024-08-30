@@ -23,9 +23,15 @@ table{
 } 
 h1{
     background-color: #0c6cfc;
-    height: 6rem;
+    height: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+}
+#contenTable{
+    display:none;
+}
+thead{
+    background: #001c46;
 }
