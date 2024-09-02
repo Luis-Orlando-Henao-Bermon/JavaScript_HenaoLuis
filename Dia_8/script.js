@@ -49,7 +49,7 @@ function mostrarPersona() {
                         <tr><th>Gravity:</th><td>${home.gravity}</td></tr>
                         <tr><th>Terrain:</th><td>${home.terrain}</td></tr>
                         <tr><th>Surface water:</th><td>${home.surface_water}</td></tr>
-                        <tr><th>Population:</th><td>${home.spopulation}</td></tr>
+                        <tr><th>Population:</th><td>${home.population}</td></tr>
                         <tr><th>Residents:</th><td>${home.residents.map(i => i).join("<br>")}</td></tr>
                         <tr><th>Films:</th><td>${home.films.map(i => i).join("<br>")}</td></tr>
                         <tr><th>Created:</th><td>${home.created}</td></tr>
@@ -210,21 +210,6 @@ function mostrarPersona() {
             alert("ID fuera de rango (Rango maximo 88)")
         }
     })
-
-
-
 }
 
-// <tr><th>Title:</th><td>${films.title}</td></tr>
-// <tr><th>Episode id:</th><td>${films.episode_id}</td></tr>
-// <tr><th>Opening crawl:</th><td>${films.opening_crawl}</td></tr>
-// <tr><th>Director:</th><td>${films.director}</td></tr>
-// <tr><th>Producer:</th><td>${films.climate}</td></tr>
-// <tr><th>Release date:</th><td>${films.release_date}</td></tr>
-// <tr><th>Characters:</th><td>${films.characters.map(i=>i).join("<br>")}</td></tr>
-// <tr><th>Planets:</th><td>${films.planets.map(i=>i).join("<br>")}</td></tr>
-// <tr><th>Starships:</th><td>${films.starships.map(i=>i).join("<br>")}</td></tr>
-// <tr><th>Vehicles:</th><td>${films.vehicles.map(i=>i).join("<br>")}</td></tr>
-// <tr><th>Species:</th><td>${films.species.map(i=>i).join("<br>")}</td></tr>
-// <tr><th>Created:</th><td>${films.created}</td></tr>
-// <tr><th>Edited:</th><td>${films.edited}</td></tr>
+//Desarrolado por Luis Henao
