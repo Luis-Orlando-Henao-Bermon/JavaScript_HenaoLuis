@@ -1,0 +1,65 @@
+@font-face {
+    font-family: Oxanium;
+    src: url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap&#39');
+}
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: 'Oxanium', cursive;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(#6eb9f5,#ebf5fd);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#pokedex{
+    width: auto;
+    margin: auto;
+    position: absolute;
+    z-index: -5;
+}
+#animacion{
+    width: 100%;    
+    height: 9.5rem;
+    margin-top: 12.5rem;
+    justify-content: center;
+    align-items: center;
+}
+#animacion img{
+    width: 6rem;
+}
+#botones{
+    display: flex;
+    gap: 2rem;
+    margin-top: 6rem;
+}
+#inp{
+    margin-top: 3rem;
+}
+button{
+    width: 8rem;
+}
+#poke{
+    margin-left: -2rem;
+    display: flex;
+    flex-direction: column;
+    width: 27rem;
+    height: 40rem;
+    text-align: center;
+    align-items: center;
+}
+#nombre{
+    font-size: 1.5rem;
+    width: 17rem;
+    text-align: end;
+    font-weight: 500;
+    height: 2.3rem;
+}
+#nombre span{
+    color: gray;
+}
