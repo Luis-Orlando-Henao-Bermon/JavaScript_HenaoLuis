@@ -6,7 +6,7 @@ document.getElementById('form').addEventListener("submit",function (mostrarPokem
     fetch(url)
     .then(res=>res.json())
     .then(data=>{
-        if (data.id>919) {
+        if (data.id>920) {
             
             document.getElementById('nombre').innerHTML=`<span>${data.id} -</span> ${data.name.toUpperCase()}`
             document.getElementById('animacion').innerHTML=`<img src="${data.sprites.other["official-artwork"].front_default}" alt="" id="gif">`
@@ -58,7 +58,7 @@ document.getElementById("pre").addEventListener("click",function(pre){
     pre.preventDefault()
     if (numero>=2) {
         
-        if (numero>919) {
+        if (numero>921) {
             
             numero-=1
             let url3="https://pokeapi.co/api/v2/pokemon/"+numero

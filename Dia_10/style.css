@@ -1,0 +1,79 @@
+#caja2{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 30rem; 
+    display: none;
+}
+#caja3{
+    display: none;
+}
+#caja4{
+    display: none;
+}
+
+#inputCaja{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+img{
+    height: 15rem;
+    object-fit: contain;
+    background: linear-gradient(0deg, rgb(255, 86, 86) 0%, rgb(148, 118, 118) 100%);
+}
+header{
+    display: flex;
+    justify-content: space-evenly;
+}
+@font-face {
+    font-family: "letra";
+    src: url(./654-font.otf);
+}
+video.video{
+    margin-top: -5rem;
+    width: 100%;
+}
+#caja1{
+    display: flex;
+    justify-content: center;
+}
+#titulo{
+    position: relative;
+    margin-top: -60em;
+    margin-left: 34em;
+    background: none;
+}
+#botones{
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+    margin-top: -25em;
+    gap: 4em;
+}
+button{
+    z-index: 10;
+    background-color: #ff4655;
+    width: 9em;
+    height: 2.5em;
+    color: white;
+    border-style:  white;
+    
+}
+#armas{
+    border-radius: 0.5em;
+    border: 1px  solid white;
+    font-family: "letra";
+    
+}
+#mapas{
+    border-radius: 0.5em;
+    border: 1px  solid white;
+    font-family: "letra";
+}
+#agentes{
+    border-radius: 0.5em;
+    border: 1px  solid white;
+    font-family: "letra";
+}
