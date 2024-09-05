@@ -3,7 +3,6 @@
 }
 body{
     background-color: #333;
-    height: 92vh;
     margin: 0%;
 }
 header{
@@ -60,10 +59,12 @@ img{
     align-items: center;
 }
 .space{
-    height: 5vw;
+    height: 8vw;
 }
 /* From Uiverse.io by csemszepp */ 
 .container {
+    padding-top: 5vw;
+    padding-bottom: 5vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
