@@ -17,9 +17,9 @@ function mostrarArmas() {
         for (const i of arm.data) {
             armas.innerHTML+=` 
             
-            <div class="card mb-3" style="width: 18rem;">
+            <div class="card mb-3 box" style="width: 18rem;">
                 <img src="${i.displayIcon}" class="card-img-top" alt="...">
-                <div class="card-body">
+                <div class="card-body content">
                     <h5 class="card-title">${i.displayName}</h5>
                     <h6 class="card-title">${i.shopData.category}</h6>
                 </div>

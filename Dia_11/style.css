@@ -1,0 +1,111 @@
+
+@import "https://fonts.googleapis.com/css?family=Ubuntu:300,400,500";
+@import "https://fonts.googleapis.com/css?family=Raleway:400";
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family:"ubuntu" ;
+}
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.contentImage{
+    width: 3.2rem;
+    overflow: hidden;
+    height: 3.7rem;
+}
+.perfil{
+    background-image: url("https://randomuser.me/img/card_icons.png");
+    background-position-y:-3.9rem ;
+    transition: 0.3s;
+    background-size: 30rem;
+}
+.correo{
+    background-image: url("https://randomuser.me/img/card_icons.png");
+    background-position-y:-3.9rem ;
+    background-position-x: -5.3rem;
+    transition: 0.3s;
+    background-size: 30rem;
+}
+.date{
+    background-image: url("https://randomuser.me/img/card_icons.png");
+    background-position-y:-3.9rem ;
+    background-position-x: -10.7rem;
+    transition: 0.3s;
+    background-size: 30rem;
+}
+.ubicacion{
+    background-image: url("https://randomuser.me/img/card_icons.png");
+    background-position-y:-3.9rem ;
+    background-position-x: -16rem;
+    transition: 0.3s;
+    background-size: 30rem;
+}
+.telefono{
+    background-image: url("https://randomuser.me/img/card_icons.png");
+    background-position-y:-3.9rem ;
+    background-position-x: -21.4rem;
+    transition: 0.3s;
+    background-size: 30rem;
+}
+.password{
+    background-image: url("https://randomuser.me/img/card_icons.png");
+    background-position-y:-3.9rem ;
+    background-position-x: -26.7rem;
+    transition: 0.3s;
+    background-size: 30rem;
+}
+.first_col{
+    background-position-y:-7.65rem ;
+}
+.black{
+    width: 100%;
+    height: 30rem;
+    background-color: #2c2e31;
+}
+#contenido{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -15.5rem;
+    background-color: white;
+    width: 56vw;
+}
+#lineaMitad{
+    background-color: #f9f9f9;
+    width: 100%;
+    height: 9rem;
+    border-bottom: #d4d4d4 1px solid;
+}
+#foto{
+    width: 10rem;
+    border-radius: 50%;
+}
+.imagen{
+    margin-top: -7rem;
+    background-color: white;
+    z-index: 2;
+    padding: 0.3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    border: #d4d4d4 1px solid;
+    justify-content: center;
+}
+#clave{
+    color: #999;
+    font-size: 18px;
+    margin-top: 2rem;
+}
+#valor{
+    font-size: 38px;
+}
+#icons{
+    margin-top: 3rem;
+    display: flex;
+    gap: 2rem;
+}

@@ -1,4 +1,19 @@
-var numero;
+var numero=1;
+function defecto(numero) {
+    id=numero
+    url="https://pokeapi.co/api/v2/pokemon/"+id
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>{
+        
+        document.getElementById('nombre').innerHTML=`<span>${data.id} -</span> ${data.name[0].toUpperCase()+data.name.substring(1)}`
+        document.getElementById('animacion').innerHTML=`<img src="${data.sprites.other.showdown.front_default}" alt="" id="gif">`
+        document.getElementById('audio').innerHTML=`<audio src="${data.cries.latest}" autoplay></audio>`
+
+        numero=data.id
+    })
+}
+defecto(numero)
 document.getElementById('form').addEventListener("submit",function (mostrarPokemon){
     id=document.getElementById('inp').value
     url="https://pokeapi.co/api/v2/pokemon/"+id
