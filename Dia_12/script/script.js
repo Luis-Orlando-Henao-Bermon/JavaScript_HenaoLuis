@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const addTaskButton= document.getElementById('addTaskbutton')
 
     async function fetchData() {
-        const res= await fetch('https://6674179975872d0e0a950e53.mockapi.io/todoList');
+        const res= await fetch('https://66df33aade4426916ee3e018.mockapi.io/tarea');
         data=await res.json();
         return data;
     }
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         datosContenedor.innerHTML=''
         capsula .forEach(cap => {
             const capDiv=document.createElement('div');
-
+                
             if (cap.status==="ready") {
                 capDiv.classList.add('capsulanegativa')
                 capDiv.innerHTML=`
@@ -46,7 +46,64 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
             datosContenedor.appendChild(capDiv)
         });
+        document.querySelectorAll('.completado').forEach(button=>{
+            button.addEventListener('click',botonCompletado)
+        })
+        document.querySelectorAll('.eliminado').forEach(button=>{
+            button.addEventListener('click',botonELiminar)
+        })
     }
+
+    async function addNewTask() {
+        const task=taskInput.value;
+        if (task.trim()==='') {
+            return
+        }
+
+        await fetch('https://66df33aade4426916ee3e018.mockapi.io/tarea',{
+            method: 'POST',
+            headers:{
+                'Content-Type' : 'application/json',
+            },
+            body:JSON.stringify({
+                task,
+                status: 'On hold'
+            })
+        });
+        taskInput.value='';
+        const data = await fetchData();
+        displayCapsula(data);
+    }
+    addTaskButton.addEventListener('click',addNewTask)
+
+    async function botonCompletado(event) {
+        const id=event.target.getAttribute('data-id');
+        await fetch(`https://66df33aade4426916ee3e018.mockapi.io/tarea/${id}`,{
+            method:'PUT',
+            headers:{
+                'Content-Type' : 'application/json',
+            },
+            body:JSON.stringify({
+                status: 'ready'
+            })
+        })
+        const data = await fetchData();
+        displayCapsula(data)
+        
+    }
+    async function botonELiminar(event) {
+        const id=event.target.getAttribute('data-id');
+        await fetch(`https://66df33aade4426916ee3e018.mockapi.io/tarea/${id}`,{
+            method:'DELETE',
+            headers:{
+                'Content-Type' : 'application/json',
+            }
+        })
+        const data = await fetchData();
+        displayCapsula(data)
+        
+    }
+    
     fetchData().then(data=>{
         displayCapsula(data)
     })
