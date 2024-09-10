@@ -3,6 +3,8 @@
     padding: 0%;
 }
 body{
+    padding-top: 1rem;
+    overflow: hidden;
     width: 100vw;
     margin: 0%;
     height: 100vh;
