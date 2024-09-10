@@ -1,0 +1,53 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    width: 100vw;
+    margin: 0%;
+    height: 100vh;
+    text-align: center;
+}
+#fondo{
+    width: 70%;
+}
+.mesa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+.cartasA img,.cartasB img{
+    width: 5rem;
+}
+.carta{
+    width: 9rem;
+    overflow: hidden;
+}
+.carta img{
+    width: 18rem;
+}
+.cartasB,.cartasA   {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.cartasA, .cartasB{
+    width: 10rem;
+}
+#nuevo{
+    margin: auto;
+    
+}
+.cartaVer{
+    position: absolute;     
+    transition: 1s;
+}
+.jugador1{
+    margin-left: 35vw;
+}
+.jugador2{
+    right: 39vw;
+}
