@@ -14,22 +14,27 @@ function nuevoJuego() {
         var player2=[]
         document.querySelector('.ver1').innerHTML=""
         document.querySelector('.ver2').innerHTML=""
+        document.querySelector('.ganador').innerHTML=""
+        
+        
 
         fetch(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=52`)
         .then(resp=>resp.json())
         .then(cartas=>{
             document.querySelector('.cartasA').innerHTML=`<div class="carta">
+                PC
                     <img src="./content/image-removebg-preview__3_-Pb6UbCBwq-transformed-removebg-preview.png" id="cartaAtras">
                 </div>`
             document.querySelector('.cartasB').innerHTML=`
                 <div class="carta">
+                    Jugador
                     <img src="./content/image-removebg-preview__3_-Pb6UbCBwq-transformed-removebg-preview.png" id="cartaAtras">
                 </div>`
             
-            for (let i = 0; i<26; i++) {
+            for (let i = 0; i<10; i++) {
                 player1.push(cartas.cards[i])
             }
-            for (let i = 26; i<52; i++) {
+            for (let i = 26; i<36; i++) {
                 player2.push(cartas.cards[i])
             }
             document.getElementById('lanzar').addEventListener('click',lanzarCarta)
@@ -37,19 +42,28 @@ function nuevoJuego() {
             function lanzarCarta(){
                 if (player1.length==0) {
                     document.querySelector('.cargar').innerHTML=''
-                    document.querySelector('.cartasVer').innerHTML='Ganaste el juego'
+                    document.querySelector('.ganador').innerHTML='Ganaste el juego 😁'
+                    document.querySelector('.ver1').innerHTML=``
+                    document.querySelector('.ver2').innerHTML=``
                 } 
                 else if (player2.length==0) {
                     document.querySelector('.cargar').innerHTML=''
-                    document.querySelector('.cartasVer').innerHTML='Perdiste el juego'
+                    document.querySelector('.ganador').innerHTML='Perdiste el juego 😢'
+                    document.querySelector('.ver1').innerHTML=``
+                    document.querySelector('.ver2').innerHTML=``
                 }
                 else {
-    
+                    document.querySelector('.ver1').innerHTML=""
+                    document.querySelector('.ver2').innerHTML=""
+                    document.querySelector('.ganador').innerHTML=""
+
+
                     document.querySelector('.ver1').innerHTML=`
                     <img src="${player1[0].images.png}" class="cartaVer jugador1">`
                     let cartaA=player1[0]
                     player1.splice(0,1)
                     document.querySelector('.cartasA').innerHTML=`<div class="carta">
+                    PC
                         <img src="./content/image-removebg-preview__3_-Pb6UbCBwq-transformed-removebg-preview.png" id="cartaAtras">
                     </div>
                     <p>Tienes  ${player1.length} cartas</p>`
@@ -61,6 +75,7 @@ function nuevoJuego() {
                     let cartaB=player2[0]
                     player2.splice(0,1)
                     document.querySelector('.cartasB').innerHTML=`<div class="carta">
+                        Jugador
                         <img src="./content/image-removebg-preview__3_-Pb6UbCBwq-transformed-removebg-preview.png" id="cartaAtras">
                     </div>
                     <p>Tienes  ${player2.length} cartas</p>
@@ -68,7 +83,7 @@ function nuevoJuego() {
     
                     var numeroCarta1
                     var numeroCarta2
-                    //Convertir en numero la carta de la computadora
+                    //Convertir en numero la carta de la PC
                     if (cartaA.value=='QUEEN') {
                         numeroCarta1=12
                     } 
