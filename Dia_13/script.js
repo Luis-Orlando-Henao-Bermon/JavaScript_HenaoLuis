@@ -12,6 +12,8 @@ function nuevoJuego() {
 
         var player1=[]
         var player2=[]
+        document.querySelector('.ver1').innerHTML=""
+        document.querySelector('.ver2').innerHTML=""
 
         fetch(`https://deckofcardsapi.com/api/deck/${deck_id}/draw/?count=52`)
         .then(resp=>resp.json())
@@ -23,7 +25,7 @@ function nuevoJuego() {
                 <div class="carta">
                     <img src="./content/image-removebg-preview__3_-Pb6UbCBwq-transformed-removebg-preview.png" id="cartaAtras">
                 </div>`
-
+            
             for (let i = 0; i<26; i++) {
                 player1.push(cartas.cards[i])
             }
@@ -34,30 +36,35 @@ function nuevoJuego() {
 
             function lanzarCarta(){
                 if (player1.length==0) {
-                    document.querySelector('.cargar').innerHTML='Ganaste el juego'
+                    document.querySelector('.cargar').innerHTML=''
+                    document.querySelector('.cartasVer').innerHTML='Ganaste el juego'
                 } 
                 else if (player2.length==0) {
-                    document.querySelector('.cargar').innerHTML='Perdiste el juego'
+                    document.querySelector('.cargar').innerHTML=''
+                    document.querySelector('.cartasVer').innerHTML='Perdiste el juego'
                 }
                 else {
     
-                    document.querySelector('.cartasA').innerHTML=`
-                    <div class="carta">
-                        <img src="./content/image-removebg-preview__3_-Pb6UbCBwq-transformed-removebg-preview.png" id="cartaAtras">
-                    </div>
-                    <img src="${player1[0].images.png}" class="cartaVer jugador1">
-                    <p>Tienes  ${player1.length} cartas</p>`
+                    document.querySelector('.ver1').innerHTML=`
+                    <img src="${player1[0].images.png}" class="cartaVer jugador1">`
                     let cartaA=player1[0]
                     player1.splice(0,1)
-    
-                    document.querySelector('.cartasB').innerHTML=`
-                    <div class="carta">
+                    document.querySelector('.cartasA').innerHTML=`<div class="carta">
                         <img src="./content/image-removebg-preview__3_-Pb6UbCBwq-transformed-removebg-preview.png" id="cartaAtras">
                     </div>
+                    <p>Tienes  ${player1.length} cartas</p>`
+
+
+                    document.querySelector('.ver2').innerHTML=`
                     <img src="${player2[0].images.png}" class="cartaVer jugador2">
-                    <p>Tienes  ${player2.length} cartas</p>`
+                    `
                     let cartaB=player2[0]
                     player2.splice(0,1)
+                    document.querySelector('.cartasB').innerHTML=`<div class="carta">
+                        <img src="./content/image-removebg-preview__3_-Pb6UbCBwq-transformed-removebg-preview.png" id="cartaAtras">
+                    </div>
+                    <p>Tienes  ${player2.length} cartas</p>
+                    `
     
                     var numeroCarta1
                     var numeroCarta2

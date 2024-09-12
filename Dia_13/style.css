@@ -1,14 +1,25 @@
 *{
     margin: 0%;
     padding: 0%;
+    color: white     ;
+}
+button{
+    padding: 1rem;
+    background-color: rgb(192, 40, 40);
+    border-radius: 2rem;
+    border: #333 1px solid;
 }
 body{
     padding-top: 1rem;
-    overflow: hidden;
     width: 100vw;
     margin: 0%;
     height: 100vh;
     text-align: center;
+    background-color: #333;
+    overflow-x: hidden;
+}
+.cargar{
+    height: 2rem;
 }
 #fondo{
     width: 70%;
@@ -19,15 +30,16 @@ body{
     align-items: center;
     padding: 0 1rem;
 }
-.cartasA img,.cartasB img{
-    width: 5rem;
+.cartasVer img{
+    width: clamp(4rem,10vw,5rem);
 }
 .carta{
-    width: 9rem;
+    width: clamp(4rem,9vw,9rem);
     overflow: hidden;
 }
 .carta img{
-    width: 18rem;
+    width:clamp(4rem,9vw,9rem);
+    object-fit: contain;
 }
 .cartasB,.cartasA   {
     padding-top: 1rem;
@@ -35,21 +47,40 @@ body{
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .cartasA, .cartasB{
     width: 10rem;
+}
+.ver1,.ver2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #nuevo{
     margin: auto;
     
 }
-.cartaVer{
-    position: absolute;     
+.cartaVer{    
     transition: 1s;
 }
-.jugador1{
-    margin-left: 35vw;
+.reglas{
+    width: clamp(18rem,50vw,70rem);
+    margin: auto;
+    height: auto;
+    font-size: clamp(1rem,2vw,2rem);
+    margin-top: 2rem;
 }
-.jugador2{
-    right: 39vw;
+.cartasVer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+@media only screen and (max-width:790px) {
+    #fondo{
+        opacity: 0;
+    }
 }
