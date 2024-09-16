@@ -1,0 +1,54 @@
+/* mi-boton{
+    background-color: blue;
+    top: 10px;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: relative;
+    color: white;
+
+} */
+@font-face {
+    font-family: letra;
+    src: url(./content/Montserrat-VariableFont_wght.ttf);
+}
+*{
+    font-family: letra;
+    margin: 0%;
+    padding: 0%;
+}
+#styleHeader{
+    background: #3844cc;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+input{
+    border: none;
+    width: 80%;
+    height: 3rem;
+    border-radius: 2rem;
+    padding:0 1rem ;
+}
+.persona{
+    border: #3844cc 1px solid;
+    padding:1rem 2rem;
+    margin: 1rem 0;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.filtro{
+    display: none;
+}
+.persona img{
+    width: clamp(3rem,6vw,6rem);
+    border-radius: 50%;
+}
