@@ -1,0 +1,9 @@
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    width: 70%;
+    padding: 3rem 0;
+    margin: auto;
+}
