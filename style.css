@@ -44,14 +44,16 @@ button {
     height: 11rem;
   }
   
-  #btn:hover,
-  :focus {
-    color: #ffffff;
-    background: #7700ff;
-    border: 1px solid #6f00ff;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
-    box-shadow: 0 0 5px #7700ff, 0 0 20px #7700ff, 0 0 50px #7700ff,
-      0 0 100px #7700ff;
+#btn:hover,:focus {
+  color: #ffffff;
+  background: #7700ff;
+  border: 1px solid #6f00ff;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  box-shadow: 0 0 5px #7700ff, 0 0 20px #7700ff, 0 0 50px #7700ff,
+    0 0 100px #7700ff;
+  padding: 10px 40px;
+  height: 12rem;
+
 }
 img{
     width: 7rem;
