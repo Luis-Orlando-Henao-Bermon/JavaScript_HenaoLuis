@@ -7,3 +7,25 @@
     padding: 3rem 0;
     margin: auto;
 }
+.desp{
+    display: none;
+}
+.selec{
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.pInfo{
+    font-size: clamp(1rem,2vw,1.5rem);
+}
+#formulario{
+    text-align: center;
+    
+}
+.btn{
+    height: 3rem;
+}
+#labelAño{
+    font-size: clamp(1rem,2vw,1.5rem);
+
+}

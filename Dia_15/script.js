@@ -6,22 +6,6 @@
 // }
 // customElements.define('boton-shadow',crearBotonShadow)
 
-class cabezalAño extends HTMLElement{
-    constructor(){
-        super();
-        this.innerHTML=`<table class="table table-info table-hover table-borderless border-info">
-            <thead>
-                <tr>
-                    <th scope="col">Municipio</th>
-                    <th scope="col">Institucion educativa</th>
-                    <th scope="col">Categoria</th>
-                </tr>
-            </thead>
-            <tbody><mi-cuerpo></mi-cuerpo></tbody>
-
-        </table>`
-    }
-}
 
 
 class cabezal extends HTMLElement{
@@ -44,12 +28,13 @@ class cabezal extends HTMLElement{
                     <th scope="col">2023</th>
                 </tr>
             </thead>
-            <tbody><mi-cuerpo></mi-cuerpo></tbody>
+            <tbody></tbody>
 
         </table>`
     }
 }
 customElements.define("prueba-icfes",cabezal)
+
 fetch("https://www.datos.gov.co/resource/hk5x-635y.json")
 .then(res=>res.json())
 .then(datos=>{
@@ -75,8 +60,41 @@ fetch("https://www.datos.gov.co/resource/hk5x-635y.json")
         tbody.appendChild(lista)
     }
 })
-customElements.define("mi-cuerpo",colegios)
-document.querySelector("#años").addEventListener("click",()=>{
-    customElements.define("prueba-icfes",cabezalAño)
+
+
+document.getElementById("formulario").addEventListener("submit",function(pre){
+    pre.preventDefault()
+    document.querySelector("prueba-icfes").innerHTML=`<table class="table table-info table-hover table-borderless border-info">
+            <thead>
+                <tr>
+                    <th scope="col">Municipio</th>
+                    <th scope="col">Institucion educativa</th>
+                    <th scope="col">Categoria</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+
+        </table>`
+        fetch("https://www.datos.gov.co/resource/hk5x-635y.json")
+        .then(res=>res.json())
+        .then(datoYear=>{
+            
+            let year=String(document.getElementById("años").value)
+            let tableYear=document.querySelector(".table")
+            let bodyYear=document.createElement("tbody")
+            for (const x of datoYear) {
+                for (const i in x) {
+                    
+                    if (i.includes(year)) {
+                        var nota=x[i]
+                    }
+                }
+                bodyYear.innerHTML+=`<tr>
+                    <td class="table-light">${x.municipio}</td>
+                    <td class="table-light">${x.institucion_educativa}</td>
+                    <td class="table-light">${nota}</td>
+                </tr>`
+            }
+            tableYear.appendChild(bodyYear)
+        })
 })
-console.log(document.querySelector("#años").value);

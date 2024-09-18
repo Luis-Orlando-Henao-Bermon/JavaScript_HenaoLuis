@@ -9,27 +9,32 @@
 </head>
 <body>
     <div class="info">
-        <p>
+        <p class="pInfo">
             COMPARATIVO CLASIFICACIÓN DE PLANTELES - PRUEBAS SABER 11° NR: no reporta, NA: No aplica, Categorías: Muy inferior, inferior, bajo, medio, alto, superior, muy superior, Nuevas categorías: D,C,B,A,A+
         </p>
         <br>
-        <label for="años" id="labelAño">
-            Buscar por año
-        </label>
-        <select name="" id="años" palceholder="hola">
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-        </select>
+        <form action="" id="formulario">
+            <label for="años" id="labelAño">
+                Buscar por año
+            </label>
+            <div class="selec">
+                <select name="" id="años" palceholder="hola" class="form-select form-select-lg mb-3">
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </select>
+                <input type="submit" value="Buscar" class="btn btn-primary" >
+            </div>
+        </form>
     </div>
-    <prueba-icfes></prueba-icfes>
+    <prueba-icfes id="tagVariable"></prueba-icfes>
 </body>
 <script src="./script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
